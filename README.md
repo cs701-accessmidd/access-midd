@@ -5,6 +5,6 @@
 
 Steps to run application:
 ```
-cd AcccessMidd
+cd access-midd
 react-native run-ios
 ```
