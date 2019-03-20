@@ -1,0 +1,4 @@
+,accuracy,formatted_address,google_place_id,input_string,latitude,longitude,number_of_results,postcode,status,type
+0,ROOFTOP,"Battell Hall, Middlebury, VT 05753, USA",ChIJjx3OgapdtUwRO7sRuSa3WF4,Battell Hall Middlebury VT,44.0113345,-73.1780382,1,05753,OK,premise
+1,ROOFTOP,"202 Freeman Way, Middlebury, VT 05753, USA",ChIJ___vO6pdtUwRU0Gk0o-N0Cc,Coffrin Hall Middlebury VT,44.0131872,-73.1789902,1,05753,OK,"establishment,point_of_interest"
+2,ROOFTOP,"160 HMKL Way, Middlebury, VT 05753, USA",ChIJheImAqtdtUwRxot5FRjHsm8,Hadley Hall Middlebury VT,44.0116242,-73.1812384,1,05753,OK,"establishment,point_of_interest"

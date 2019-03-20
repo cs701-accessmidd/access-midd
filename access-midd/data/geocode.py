@@ -35,13 +35,13 @@ logger.addHandler(ch)
 # With a "Google Maps Geocoding API" key from https://console.developers.google.com/apis/,
 # the daily limit will be 2500, but at a much faster rate.
 # Example: API_KEY = 'AIzaSyC9azed9tLdjpZNjg2_kVePWvMIBq154eA'
-API_KEY = 'AIzaSyAAKaaiNOQpJ7WHwf1-IXYFGl5dyVkLvOk'
+API_KEY = 'AIzaSyDOuEWApOuq1A3AVXVpNsoeatoE2MgvO3M'
 # Backoff time sets how many minutes to wait between google pings when your API limit is hit
 BACKOFF_TIME = 30
 # Set your output file name here.
-output_filename = 'building_coordinates_short.csv'
+output_filename = 'buildings_coordinates.csv'
 # Set your input file here
-input_filename = "buildings_list_short.csv"
+input_filename = "buildings_list.csv"
 # Specify the column name in your input data that contains addresses here
 address_column_name = "Address"
 # Return Full Google Results? If True, full JSON results from Google are included in output
@@ -64,10 +64,9 @@ addresses = data[address_column_name].tolist()
 # (remove this line / alter for your own dataset)
 # addresses = (data[address_column_name] + ',' + data['County'] + ',Ireland').tolist()
 
-
 #------------------	FUNCTION DEFINITIONS ------------------------
 
-def get_google_results(address, api_key=None, return_full_response=False):
+def get_google_results(address, api_key=API_KEY, return_full_response=False):
     """
     Get geocode results from Google Maps Geocoding API.
 
@@ -148,18 +147,13 @@ for address in addresses:
             geocoded = True
 
         # If we're over the API limit, backoff for a while and try again later.
-        if geocode_result['status'] == 'OVER_QUERY_LIMIT':
-            logger.info("Hit Query Limit! Backing off for a bit.")
-            time.sleep(BACKOFF_TIME * 60) # sleep for 30 minutes
-            geocoded = False
-        else:
-            # If we're ok with API use, save the results
-            # Note that the results might be empty / non-ok - log this
-            if geocode_result['status'] != 'OK':
-                logger.warning("Error geocoding {}: {}".format(address, geocode_result['status']))
+        if geocode_result['status'] == 'OK':
             logger.debug("Geocoded: {}: {}".format(address, geocode_result['status']))
             results.append(geocode_result)
             geocoded = True
+        else:
+            logger.warning("Error geocoding {}: {}".format(address, geocode_result['status']))
+
 
     # Print status every 100 addresses
     if len(results) % 100 == 0:
@@ -168,6 +162,8 @@ for address in addresses:
     # Every 500 addresses, save progress to file(in case of a failure so you have something!)
     if len(results) % 500 == 0:
         pd.DataFrame(results).to_csv("{}_bak".format(output_filename))
+    print(results)
+
 
 # All done
 logger.info("Finished geocoding all addresses")
