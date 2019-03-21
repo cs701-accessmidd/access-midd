@@ -5,6 +5,9 @@ import {
 } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
+import Details from './components/Details';
+
+
 MapboxGL.setAccessToken('pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNzMHV6N25hNTlnIn0.7UHYWxI_GveY_mUZxiYAhA');
 
 const styles = StyleSheet.create({
@@ -13,16 +16,6 @@ const styles = StyleSheet.create({
     borderColor: 'darkblue',
     borderWidth: 1,
     borderRadius: 5,
-  },
-  detail: {
-    backgroundColor: 'white',
-    borderColor: 'darkblue',
-    borderWidth: 1,
-    borderRadius: 5,
-    flex: 1,
-  },
-  buildingName: {
-    fontSize: 16,
   },
 });
 
@@ -40,21 +33,17 @@ export default class App extends Component<{}> {
     const { showDetail, detailPoint } = this.state;
     const detailView = showDetail
       ? (
-        <View style={styles.detail}>
-          <Text style={styles.buildingName}>{detailPoint.name}</Text>
-          <Text>Detailed info will be here</Text>
-          <Button
-            title="close"
-            onPress={() => this.setState({ showDetail: false })}
-          />
-        </View>
+        <Details
+          view={bool => this.setState({ showDetail: bool })}
+          building={detailPoint}
+        />
       ) : null;
     return (
       <View style={{ flex: 1 }}>
         <MapboxGL.MapView
           style={{ flex: 1 }}
-          zoomLevel={15}
-          centerCoordinate={[-73.18126699999999,44.0134025]}
+          zoomLevel={14.5}
+          centerCoordinate={[-73.177628, 44.007619]}
           zoomEnabled
           scrollEnabled
         >
