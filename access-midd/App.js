@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 export default class App extends Component<{}> {
   constructor() {
     super();
-    this.data = data
+    this.data = data;
 
     this.state = {
       showDetail: false,
@@ -34,42 +34,38 @@ export default class App extends Component<{}> {
   }
 
 
-
   handleChange(e) {
-          // Variable to hold the original version of the list
+    // Variable to hold the original version of the list
 
-      let currentList = this.data;
-          // Variable to hold the filtered list before putting into state
-      let filtered = new Object();
+    const currentList = this.data;
+    // Variable to hold the filtered list before putting into state
+    let filtered = {};
 
-          // If the search bar isn't empty
-      if (e !== "") {
-        const term = e.toLowerCase();
+    // If the search bar isn't empty
+    if (e !== '') {
+      const term = e.toLowerCase();
 
-        filtered = currentList.filter(item => {
-                        // change current item to lowercase
-                const lc = item.name.toLowerCase();
-                        // check to see if the current list item includes the search term
-                        // If it does, it will be added to newList. Using lowercase eliminates
-                        // issues with capitalization in search terms and search content
-                return lc.includes(term);
-              });
-
-
-      } else {
-              // If the search bar is empty, set newList to original task list
-        filtered = currentList;
-      }
-          // Set the filtered state based on what our rules added to newList
-      this.setState({
-        filteredData: filtered,
+      filtered = currentList.filter((item) => {
+        // change current item to lowercase
+        const lc = item.name.toLowerCase();
+        // check to see if the current list item includes the search term
+        // If it does, it will be added to newList. Using lowercase eliminates
+        // issues with capitalization in search terms and search content
+        return lc.includes(term);
       });
+    } else {
+      // If the search bar is empty, set newList to original task list
+      filtered = currentList;
     }
-
+    // Set the filtered state based on what our rules added to newList
+    this.setState({
+      filteredData: filtered,
+    });
+  }
 
 
   render() {
-    const { showDetail, detailPoint } = this.state;
+    const { showDetail, detailPoint, filteredData } = this.state;
     const detailView = showDetail
       ? (
         <Details
@@ -86,7 +82,7 @@ export default class App extends Component<{}> {
           zoomEnabled
           scrollEnabled
         >
-          {this.state.filteredData.map(point => (
+          {filteredData.map(point => (
             <MapboxGL.PointAnnotation
               id={point.code}
               title={point.name}
@@ -107,8 +103,8 @@ export default class App extends Component<{}> {
           ))}
         </MapboxGL.MapView>
         <TextInput
-          style={{height: 50, borderColor: 'gray', borderWidth: 1.5}}
-          onChangeText={(text) => {this.handleChange(text)}}
+          style={{ height: 50, borderColor: 'gray', borderWidth: 1.5 }}
+          onChangeText={(text) => { this.handleChange(text); }}
           placeholder="Search Buildings..."
         />
         {detailView}
