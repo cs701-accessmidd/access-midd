@@ -11,6 +11,6 @@ react-native run-ios
 
 ## Running Lint
 
-'''
+```
 npm run lint -- --fix
-'''
+```
