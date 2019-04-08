@@ -23,6 +23,10 @@ const styles = StyleSheet.create({
   buildingName: {
     fontSize: 16,
   },
+  buildingCode: {
+    fontSize: 12,
+    color: 'gray',
+  },
 });
 
 function Details(props) {
@@ -30,6 +34,8 @@ function Details(props) {
   return (
     <View style={styles.detail}>
       <Text style={styles.buildingName}>{building.name}</Text>
+      <Text style={styles.buildingCode}>{building.code}</Text>
+      <Text>{building.other}</Text>
       <Text>Detailed info will be here</Text>
       <Button
         title="close"
@@ -38,14 +44,17 @@ function Details(props) {
     </View>
   );
 }
+// Article PropType used repeatedly in application, export to DRY it up
+export const BuildingShape = PropTypes.shape({
+  name: PropTypes.string,
+  code: PropTypes.string,
+  coord: PropTypes.array,
+  other: PropTypes.string,
+});
 
 
 Details.propTypes = {
-  building: PropTypes.objectOf(PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.array,
-  ])).isRequired,
+  building: BuildingShape.isRequired,
   view: PropTypes.func.isRequired,
 };
 
