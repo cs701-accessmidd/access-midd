@@ -11,10 +11,13 @@
 
 import React, { Component } from 'react';
 import {
-  View, Button, TextInput, StyleSheet
+  View, Button, TextInput, StyleSheet, Text
 } from 'react-native';
 import PropTypes from 'prop-types';
+import MapboxGL from '@mapbox/react-native-mapbox-gl';
 import { BuildingShape } from './Details';
+
+MapboxGL.setAccessToken('pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNzMHV6N25hNTlnIn0.7UHYWxI_GveY_mUZxiYAhA');
 
 const styles = StyleSheet.create({
   textbox: {
@@ -23,6 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
+
 class Editor extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +34,7 @@ class Editor extends Component {
     this.state = {
       name: props.building ? props.building.name : '',
       code: props.building ? props.building.code : '',
-      coord: props.building ? props.building.coord : '',
+      coord: props.building ? props.building.coord : null,
       other: props.building ? props.building.other : '',
     };
 
@@ -39,6 +43,12 @@ class Editor extends Component {
     // https://reactjs.org/docs/handling-events.html
     this.handleSave = this.handleSave.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+  }
+
+  addCoord(coordinates) {
+    this.setState({
+      coord: coordinates
+    });
   }
 
   handleSave() {
@@ -63,7 +73,9 @@ class Editor extends Component {
   render() {
     // We need to create new callbacks here to pass the additional arguments to handleTextUpdate, or
     // we could create simple wrappers like for handleCancel
-    const { name, code, other } = this.state;
+    const {
+      name, code, coord, other
+    } = this.state;
     const nameInput = (
       <TextInput
         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
@@ -72,6 +84,33 @@ class Editor extends Component {
         onChangeText={(text) => { this.setState({ name: text }); }}
       />
     );
+    const marker = coord
+      ? (
+        <MapboxGL.PointAnnotation
+          id={code}
+          title={name}
+          key={code}
+          coordinate={coord}
+        >
+          <MapboxGL.Callout
+            title={name}
+          />
+        </MapboxGL.PointAnnotation>
+      ) : null;
+
+    const coordInput = (
+      <MapboxGL.MapView
+        style={{ flex: 1 }}
+        zoomLevel={14.5}
+        centerCoordinate={[-73.177628, 44.007619]}
+        zoomEnabled
+        scrollEnabled
+        onPress={e => this.addCoord(e.geometry.coordinates)}
+      >
+        {marker}
+      </MapboxGL.MapView>
+    );
+
     const codeInput = (
       <TextInput
         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
@@ -91,13 +130,17 @@ class Editor extends Component {
     );
 
     return (
-      <View style={styles.textbox}>
-        {nameInput}
-        {codeInput}
-        {otherInput}
-        <View>
-          <Button disabled={name === ''} onPress={this.handleSave} title="Save" />
-          <Button onPress={this.handleCancel} title="Cancel" />
+      <View style={{ flex: 1 }}>
+        {coordInput}
+        <Text>Click to Add or Move Pin (Must be Set)</Text>
+        <View style={styles.textbox}>
+          {nameInput}
+          {codeInput}
+          {otherInput}
+          <View>
+            <Button disabled={!(name !== '' && coord)} onPress={this.handleSave} title="Save" />
+            <Button onPress={this.handleCancel} title="Cancel" />
+          </View>
         </View>
       </View>
     );
