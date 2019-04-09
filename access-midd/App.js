@@ -1,25 +1,14 @@
 
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, Text, Button, TextInput, Alert
+  View, Button, TextInput
 } from 'react-native';
-import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
-import Details from './components/Details';
 import Editor from './components/Editor';
+import ListView from './components/ListView';
+import MapView from './components/MapView';
+
 import data from './data/buildings.json';
-
-
-MapboxGL.setAccessToken('pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNzMHV6N25hNTlnIn0.7UHYWxI_GveY_mUZxiYAhA');
-
-const styles = StyleSheet.create({
-  callout: {
-    backgroundColor: 'white',
-    borderColor: 'darkblue',
-    borderWidth: 1,
-    borderRadius: 5,
-  },
-});
 
 export default class App extends Component<{}> {
   constructor() {
@@ -28,10 +17,10 @@ export default class App extends Component<{}> {
 
 
     this.state = {
-      showDetail: false,
       detailPoint: null,
       filteredData: data,
       mode: 'view',
+      listView: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -68,82 +57,46 @@ export default class App extends Component<{}> {
 
   handleEditorReturn(newBuilding) {
     if (newBuilding) { // Not a cancel
-      let message = '';
-      const { showDetail, detailPoint } = this.state;
-      if (showDetail) { // if something selected
+      const { detailPoint } = this.state;
+      const i = this.data.indexOf(detailPoint);
+      if (i !== -1) { // if editing an existing building
         // delete term from data
-        const i = this.data.indexOf(detailPoint);
         this.data.splice(i, 1);// removes article from data
-        message = 'Building Changed';
-      } else {
-        message = 'Building Added';
       }
       this.data.push(newBuilding);
-      /* eslint-disable no-console */
-      Alert.alert(
-        message,
-        'Continue as you will',
-        [
-          { text: 'OK', onPress: () => console.log('OK Pressed') },
-        ],
-        { cancelable: false },
-      );
-      /* eslint-enable no-console */
     }
-    this.setState({ mode: 'view', showDetail: false });
+    this.setState({ mode: 'view' });
   }
 
 
   render() {
     const {
-      showDetail, detailPoint, filteredData, mode
+      detailPoint, filteredData, mode, listView
     } = this.state;
-    const detailView = showDetail
-      ? (
-        <Details
-          view={bool => this.setState({ showDetail: bool })}
-          building={detailPoint}
-        />
 
-      ) : null;
-    const newButton = <Button title="New Building" onPress={() => this.setState({ mode: 'edit', showDetail: false, detailPoint: null })} />;
-    const editButton = <Button title="Edit Building" onPress={() => this.setState({ mode: 'edit' })} />;
-    // const searchBar = ();
-    const buttons = showDetail ? (<View>{editButton}</View>) : (<View>{newButton}</View>);
+    const view = listView
+      ? (<ListView filteredData={filteredData} edit={(building) => { this.handleChange(''); this.setState({ detailPoint: building, mode: 'edit' }); }} />)
+      : (<MapView filteredData={filteredData} edit={(building) => { this.handleChange(''); this.setState({ detailPoint: building, mode: 'edit' }); }} />);
+    const viewButtonTitle = listView ? ('Map View') : ('ListView');
+    const viewButton = (
+      <Button
+        title={viewButtonTitle}
+        onPress={() => this.setState({ listView: !listView })}
+      />
+    );
+    const newButton = (
+      <Button
+        title="New Building"
+        onPress={() => { this.handleChange(''); this.setState({ mode: 'edit', detailPoint: null }); }}
+      />
+    );
 
     if (mode === 'view') {
       return (
         <View style={{ flex: 1 }}>
-          <MapboxGL.MapView
-            style={{ flex: 1 }}
-            zoomLevel={14.5}
-            centerCoordinate={[-73.177628, 44.007619]}
-            zoomEnabled
-            scrollEnabled
-          >
-            {filteredData.map(point => (
-              <MapboxGL.PointAnnotation
-                id={point.code}
-                title={point.name}
-                key={point.code}
-                selected
-                coordinate={point.coord}
-                onSelected={() => this.setState({ detailPoint: point })}
-              >
-                <MapboxGL.Callout>
-                  <View style={styles.callout}>
-                    <Text>{point.name}</Text>
-                    <Button
-                      title="Details"
-                      onPress={() => this.setState({ showDetail: true, detailPoint: point })}
-                    />
-                  </View>
-                </MapboxGL.Callout>
-              </MapboxGL.PointAnnotation>
-            ))}
-          </MapboxGL.MapView>
-          {detailView}
-          {buttons}
+          {view}
+          {viewButton}
+          {newButton}
           <TextInput
             style={{ height: 50, borderColor: 'gray', borderWidth: 1.5 }}
             onChangeText={(text) => { this.handleChange(text); }}

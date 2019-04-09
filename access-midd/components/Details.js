@@ -3,6 +3,8 @@
   down in its props.
   props:
     building: Building to display
+    view:
+    edit:
 */
 
 import React from 'react';
@@ -37,6 +39,10 @@ function Details(props) {
       <Text style={styles.buildingCode}>{building.code}</Text>
       <Text>{building.other}</Text>
       <Text>Detailed info will be here</Text>
+      <Button
+        title="Edit"
+        onPress={() => props.edit(building)}
+      />
       <Button
         title="close"
         onPress={() => props.view(false)}
