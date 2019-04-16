@@ -1,6 +1,7 @@
 const fs = require('fs');
 // const path = require('path');
 // TODO: specify path so directory you call from doesn't matter
+// currently written to be run from the backend directory
 
 const building_data = JSON.parse(fs.readFileSync('seeds/buildings.json'));
 const data = building_data.map(obj => {
@@ -12,8 +13,6 @@ const data = building_data.map(obj => {
         plan_url: '',
     };
 });
-
-console.log(data[0])
 
 exports.seed = function(knex, Promise) {
   return knex.batchInsert('buildings', data, 100);
