@@ -7,6 +7,7 @@ Source for skeleton server.js: https://expressjs.com/en/starter/hello-world.html
 
 # Database
 
+To migrate database: `npx knex migrate:latest --env development`
 To seed database: `npx knex seed:run --env development`
 
 Sources for knex stuff:

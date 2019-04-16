@@ -15,16 +15,27 @@ export default class App extends Component<{}> {
     super();
     this.data = data;
 
-
     this.state = {
       detailPoint: null,
       filteredData: data,
       mode: 'view',
       listView: false,
     };
+
+    this.getBuildings = this.getBuildings.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillMount() {
+      this.getBuildings();
+  }
+
+  getBuildings() {
+      fetch('http://localhost:3000/buildings', { method: 'GET' }).then((response) => {
+          console.log(response)
+          // this.setState( { buildings: });
+      });
+  }
 
   handleChange(e) {
     // Variable to hold the original version of the list
