@@ -3,6 +3,8 @@
 
   props:
     filteredData: Data to list
+    edit: A callback to change View type of main app (editor view),
+          and change detail point state to  current building
 */
 
 import React from 'react';
@@ -35,6 +37,7 @@ function ListView(props) {
 
 ListView.propTypes = {
   filteredData: PropTypes.arrayOf(BuildingShape).isRequired,
+  edit: PropTypes.func.isRequired,
 };
 
 
