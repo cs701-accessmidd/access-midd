@@ -11,6 +11,4 @@ const data = buildingData.map(obj => ({
   plan_url: '',
 }));
 
-exports.seed = function (knex, Promise) {
-  return knex.batchInsert('buildings', data, 100);
-};
+exports.seed = knex => knex.batchInsert('buildings', data, 100);

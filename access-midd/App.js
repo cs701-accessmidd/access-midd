@@ -25,32 +25,27 @@ export default class App extends Component<{}> {
   }
 
   componentWillMount() {
-      this.getBuildings();
+    this.getBuildings();
   }
 
   getBuildings() {
-      fetch('http://localhost:3000/buildings', {
-        method: 'GET',
-        headers: new Headers({ 'Content-type': 'application/json' }),
-      }).then((response) => {
-        return response.json();
-      }).then((data) => {
-        const buildings = data.map((obj) => {
-          return {
-            name: obj.name,
-            code: obj.code,
-            plan_url: obj.plan_url,
-            coord: [obj.longitude, obj.latitude],
-          };
-        });
-        this.setState({ buildings, filteredData: buildings });
-      }).catch(err => console.log(err));
+    fetch('http://localhost:3000/buildings', {
+      method: 'GET',
+    }).then(response => response.json()).then((data) => {
+      const buildings = data.map(obj => ({
+        name: obj.name,
+        code: obj.code,
+        plan_url: obj.plan_url,
+        coord: [obj.longitude, obj.latitude],
+      }));
+      this.setState({ buildings, filteredData: buildings });
+    });
   }
 
   handleChange(e) {
     // Variable to hold the original version of the list
 
-    const currentList = this.state.buildings;
+    const { buildings: currentList } = this.state;
     // Variable to hold the filtered list before putting into state
     let filtered = {};
 
