@@ -1,8 +1,10 @@
 /*
-  ListView displays buildings in the form of a list.
+  Mapview displays buildings on Map
 
   props:
     filteredData: Data to list
+    edit: A callback to change View type of main app (editor view),
+          and change detail point state to  current building (sent to Details.js)
 */
 
 import React, { Component } from 'react';
@@ -13,6 +15,7 @@ import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
 import PropTypes from 'prop-types';
 import Details, { BuildingShape } from './Details';
+import Directions from './Directions';
 
 MapboxGL.setAccessToken('pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNzMHV6N25hNTlnIn0.7UHYWxI_GveY_mUZxiYAhA');
 
@@ -33,13 +36,17 @@ class MapView extends Component {
     this.state = {
       showDetail: false,
       detailPoint: null,
+      dest: null,
+      origin: null
+
     };
   }
 
-
   render() {
     const { filteredData, edit } = this.props;
-    const { showDetail, detailPoint } = this.state;
+    const {
+      showDetail, detailPoint, origin, dest
+    } = this.state;
 
     const detailView = showDetail
       ? (
@@ -47,6 +54,10 @@ class MapView extends Component {
           view={bool => this.setState({ showDetail: bool })}
           building={detailPoint}
           edit={(building) => { edit(building); }}
+          viewType="map"
+          directionsTo={building => this.setState({ dest: building.coord })}
+          directionsFrom={building => this.setState({ origin: building.coord })}
+
         />
 
       ) : null;
@@ -82,6 +93,13 @@ class MapView extends Component {
               </MapboxGL.Callout>
             </MapboxGL.PointAnnotation>
           ))}
+
+          <Directions
+            accessToken="pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNzMHV6N25hNTlnIn0.7UHYWxI_GveY_mUZxiYAhA"
+            origin={origin}
+            destination={dest}
+            type="walking"
+          />
         </MapboxGL.MapView>
         {detailView}
       </View>
@@ -91,6 +109,7 @@ class MapView extends Component {
 
 MapView.propTypes = {
   filteredData: PropTypes.arrayOf(BuildingShape).isRequired,
+  edit: PropTypes.func.isRequired,
 };
 
 
