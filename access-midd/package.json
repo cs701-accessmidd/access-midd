@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "eslint *.js **/*.js"
+    "lint": "./node_modules/.bin/eslint \"**/*.js\""
   },
   "dependencies": {
     "@mapbox/react-native-mapbox-gl": "^6.1.3",
