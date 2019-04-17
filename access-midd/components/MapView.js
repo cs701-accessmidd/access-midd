@@ -72,11 +72,11 @@ class MapView extends Component {
           zoomEnabled
           scrollEnabled
         >
-          {filteredData.map(point => (
+          {filteredData.map((point, i) => (
             <MapboxGL.PointAnnotation
               id={point.code}
               title={point.name}
-              key={point.code}
+              key={i}
               selected
               coordinate={point.coord}
               onSelected={() => this.setState({ detailPoint: point })}

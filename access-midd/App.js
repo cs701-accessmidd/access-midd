@@ -8,18 +8,16 @@ import Editor from './components/Editor';
 import ListView from './components/ListView';
 import MapView from './components/MapView';
 
-import data from './data/buildings.json';
-
 export default class App extends Component<{}> {
   constructor() {
     super();
-    this.data = data;
 
     this.state = {
       detailPoint: null,
-      filteredData: data,
+      filteredData: [],
       mode: 'view',
       listView: false,
+      buildings: [],
     };
 
     this.getBuildings = this.getBuildings.bind(this);
@@ -31,16 +29,28 @@ export default class App extends Component<{}> {
   }
 
   getBuildings() {
-      fetch('http://localhost:3000/buildings', { method: 'GET' }).then((response) => {
-          console.log(response)
-          // this.setState( { buildings: });
-      });
+      fetch('http://localhost:3000/buildings', {
+        method: 'GET',
+        headers: new Headers({ 'Content-type': 'application/json' }),
+      }).then((response) => {
+        return response.json();
+      }).then((data) => {
+        const buildings = data.map((obj) => {
+          return {
+            name: obj.name,
+            code: obj.code,
+            plan_url: obj.plan_url,
+            coord: [obj.longitude, obj.latitude],
+          };
+        });
+        this.setState({ buildings, filteredData: buildings });
+      }).catch(err => console.log(err));
   }
 
   handleChange(e) {
     // Variable to hold the original version of the list
 
-    const currentList = this.data;
+    const currentList = this.state.buildings;
     // Variable to hold the filtered list before putting into state
     let filtered = {};
 
@@ -68,13 +78,14 @@ export default class App extends Component<{}> {
 
   handleEditorReturn(newBuilding) {
     if (newBuilding) { // Not a cancel
-      const { detailPoint } = this.state;
-      const i = this.data.indexOf(detailPoint);
+      const { detailPoint, buildings } = this.state;
+      const i = buildings.indexOf(detailPoint);
       if (i !== -1) { // if editing an existing building
         // delete term from data
-        this.data.splice(i, 1);// removes article from data
+        buildings.splice(i, 1);// removes article from data
       }
-      this.data.push(newBuilding);
+      buildings.push(newBuilding);
+      this.setState({ buildings });
     }
     this.setState({ mode: 'view' });
   }

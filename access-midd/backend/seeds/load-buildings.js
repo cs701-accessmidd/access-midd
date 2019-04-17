@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const contents = fs.readFileSync(path.join(__dirname, 'buildings.json'));
-const building_data = JSON.parse(contents);
+const buildingData = JSON.parse(contents);
 const data = buildingData.map(obj => ({
   name: obj.name,
   code: obj.code,
