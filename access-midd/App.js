@@ -1,12 +1,13 @@
 
 import React, { Component } from 'react';
 import {
-  View, Button, TextInput
+  View, TextInput
 } from 'react-native';
 
 import Editor from './components/Editor';
 import ListView from './components/ListView';
 import MapView from './components/MapView';
+import Menu from './components/Menu';
 
 import data from './data/buildings.json';
 
@@ -14,6 +15,7 @@ export default class App extends Component<{}> {
   constructor() {
     super();
     this.data = data;
+    this.data.sort((a, b) => ((a.name > b.name) ? 1 : -1));
 
 
     this.state = {
@@ -21,6 +23,8 @@ export default class App extends Component<{}> {
       filteredData: data,
       mode: 'view',
       listView: false,
+      directionsView: false,
+      menu: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -50,6 +54,7 @@ export default class App extends Component<{}> {
       filtered = currentList;
     }
     // Set the filtered state based on what our rules added to newList
+
     this.setState({
       filteredData: filtered,
     });
@@ -64,6 +69,7 @@ export default class App extends Component<{}> {
         this.data.splice(i, 1);// removes article from data
       }
       this.data.push(newBuilding);
+      this.data.sort((a, b) => ((a.name > b.name) ? 1 : -1));
     }
     this.setState({ mode: 'view' });
   }
@@ -71,37 +77,41 @@ export default class App extends Component<{}> {
 
   render() {
     const {
-      detailPoint, filteredData, mode, listView
+      detailPoint, filteredData, mode, listView, menu, directionsView
     } = this.state;
 
     const view = listView
       ? (<ListView filteredData={filteredData} edit={(building) => { this.handleChange(''); this.setState({ detailPoint: building, mode: 'edit' }); }} />)
-      : (<MapView filteredData={filteredData} edit={(building) => { this.handleChange(''); this.setState({ detailPoint: building, mode: 'edit' }); }} />);
-    const viewButtonTitle = listView ? ('Map View') : ('ListView');
-    const viewButton = (
-      <Button
-        title={viewButtonTitle}
-        onPress={() => this.setState({ listView: !listView })}
-      />
-    );
-    const newButton = (
-      <Button
-        title="New Building"
-        onPress={() => { this.handleChange(''); this.setState({ mode: 'edit', detailPoint: null }); }}
-      />
-    );
+      : (<MapView filteredData={filteredData} directionsView={directionsView} edit={(building) => { this.handleChange(''); this.setState({ detailPoint: building, mode: 'edit' }); }} />);
+    const viewButtonTitle = listView ? ('map') : ('list');
+    const searchBar = menu || directionsView ? null
+      : (
+        <TextInput
+          style={{
+            height: 35, width: '75%', borderColor: 'gray', borderWidth: 1.5, justifyContent: 'flex-start'
+          }}
+          onChangeText={(text) => { this.handleChange(text); }}
+          placeholder="Search Buildings..."
+        />
+      );
 
     if (mode === 'view') {
       return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, paddingTop: '10%' }}>
+          <View style={{ flexDirection: 'row' }}>
+            {searchBar}
+            <Menu
+              style={{ justifyContent: 'flex-end', width: '25%' }}
+              showMenu={() => this.setState({ menu: !menu })}
+              menu={menu}
+              direction={directionsView}
+              currentView={viewButtonTitle}
+              directionsView={() => { this.handleChange(''); this.setState({ directionsView: !directionsView, menu: !menu }); }}
+              changeViewType={() => this.setState({ listView: !listView, menu: !menu })}
+              newBuilding={() => { this.handleChange(''); this.setState({ mode: 'edit', detailPoint: null, menu: !menu }); }}
+            />
+          </View>
           {view}
-          {viewButton}
-          {newButton}
-          <TextInput
-            style={{ height: 50, borderColor: 'gray', borderWidth: 1.5 }}
-            onChangeText={(text) => { this.handleChange(text); }}
-            placeholder="Search Buildings..."
-          />
         </View>
       );
     }
