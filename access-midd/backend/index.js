@@ -3,8 +3,10 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const knex = require('knex')(knexConfig[process.env.NODE_ENV || 'development']);
+const knex_import = require('knex');
 const knexConfig = require('./knexfile');
+
+const knex = knex_import(knexConfig[process.env.NODE_ENV || 'development']);
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
