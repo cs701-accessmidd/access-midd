@@ -1,9 +1,17 @@
 # Server info
 
 To start the server: `node index.js`
-Then go to localhost:3000/buildings to see unformatted list of buildings
 
-Source for skeleton server.js: https://expressjs.com/en/starter/hello-world.html (Express.js tutorial)
+Express tutorial used to set up server: https://expressjs.com/en/starter/hello-world.html
+
+## API
+
+- GET /buildings
+    return list of all buildings from the buildings table
+- PUT /buildings/new
+    add a new building to the buildings table. Must send an object with at least name, code, latitude, and longitude.
+- POST /buildings/:id
+    update fields of the specified building (specify with id) that are given in the request 
 
 # Database
 

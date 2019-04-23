@@ -6,5 +6,6 @@ exports.up = knex => knex.schema.createTable('buildings', (table) => {
   table.string('plan_url');
   table.timestamps();
 });
+// try adding: table.increments('id')
 
 exports.down = knex => knex.schema.dropTableIfExists('buildings');

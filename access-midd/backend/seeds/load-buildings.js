@@ -10,5 +10,7 @@ const data = buildingData.map(obj => ({
   longitude: obj.coord[0],
   plan_url: '',
 }));
+// TODO: update mapping and add migration to add columsn to table for
+//       newer version of spreadsheet
 
 exports.seed = knex => knex.batchInsert('buildings', data, 100);
