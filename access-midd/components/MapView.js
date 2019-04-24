@@ -9,7 +9,7 @@
 
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, Text, Button,
+  View, StyleSheet, Text, Button, Image
 } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
@@ -37,15 +37,35 @@ class MapView extends Component {
       showDetail: false,
       detailPoint: null,
       dest: null,
-      origin: null
+      origin: null,
+      currentLat: null,
+      currentLong: null,
+      error: null,
 
     };
   }
+  componentDidMount() {
+  this.watchId = navigator.geolocation.watchPosition(
+    (position) => {
+      this.setState({
+        currentLat: position.coords.latitude,
+        currentLong: position.coords.longitude,
+        error: null,
+      });
+    },
+    (error) => this.setState({ error: error.message }),
+    { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
+  );
+}
+
+componentWillUnmount() {
+  navigator.geolocation.clearWatch(this.watchId);
+}
 
   render() {
     const { filteredData, edit } = this.props;
     const {
-      showDetail, detailPoint, origin, dest
+      showDetail, detailPoint, origin, dest, error, currentLat, currentLong
     } = this.state;
 
     const detailView = showDetail
@@ -62,6 +82,26 @@ class MapView extends Component {
 
       ) : null;
 
+    const currentCoordinate = error ? null : [currentLat,currentLong];
+    const currentLocation = error ? null :
+      (
+        // <Text>{currentLat}</Text>);
+        <MapboxGL.PointAnnotation
+        id={"currentLocation"}
+        title={"Current Location"}
+        key={"currentLocation"}
+        coordinate={[Number(currentLat),Number(currentLong)]}
+      >
+      <Image
+        source={require('../data/bluePanther.png')}
+        style={{
+          flex: 1,
+          resizeMode: 'contain',
+          width: 30,
+          height: 30
+          }}/>
+      </MapboxGL.PointAnnotation>
+    );
 
     return (
       <View style={{ flex: 1 }}>
@@ -93,7 +133,7 @@ class MapView extends Component {
               </MapboxGL.Callout>
             </MapboxGL.PointAnnotation>
           ))}
-
+          {currentLocation}
           <Directions
             accessToken="pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNzMHV6N25hNTlnIn0.7UHYWxI_GveY_mUZxiYAhA"
             origin={origin}
