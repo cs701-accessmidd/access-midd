@@ -9,8 +9,9 @@ const data = buildingData.map(obj => ({
   latitude: obj.coord[1],
   longitude: obj.coord[0],
   plan_url: '',
+  created_at: Date.now(),
 }));
-// TODO: update mapping and add migration to add columsn to table for
+// TODO: update mapping and add migration to add columns to table for
 //       newer version of spreadsheet
 
 exports.seed = knex => knex.batchInsert('buildings', data, 100);
