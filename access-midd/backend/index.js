@@ -30,26 +30,40 @@ app.put('/buildings/new', (req, res) => {
         res.status(409).send({ error: 'Conflict: building already exists' });
         // conflict error code to indicate attempted duplicate entry
       } else {
-        const newBuilding = Object.assign(req.body, { created_at: Date.now() });
-        knex('buildings').insert(newBuilding).then((result2) => {
-          res.status(201).send(result2); // code for successfully created item
-        }).catch((err) => {
-          res.status(500).send(err); // try to parse the actual error maybe
+        const newBuilding = {
+          name: req.body.name,
+          code: req.body.code,
+          plan_url: req.body.plan_url || '',
+          latitude: req.body.coord[1],
+          longitude: req.body.coord[0],
+          created_at: Date.now(),
+        };
+        knex('buildings').insert(newBuilding).then(() => {
+          res.sendStatus(201); // code for successfully created item
+        }).catch(() => {
+          res.sendStatus(500); // try to parse the actual error maybe
         });
       }
     });
 });
 
 app.post('/building/:id', (req, res) => {
-  const updateObj = Object.assign(req.body, { updated_at: Date.now() });
+  const updateObj = {
+    name: req.body.name,
+    code: req.body.code,
+    plan_url: req.body.plan_url || '',
+    latitude: req.body.coord[1],
+    longitude: req.body.coord[0],
+    updated_at: Date.now(),
+  };
   knex('buildings')
     .where('id', '=', req.params.id)
     .update(updateObj)
-    .then((result) => {
-      res.status(200).send(result); // code for success
+    .then(() => {
+      res.sendStatus(200); // code for success
     })
-    .catch((err) => {
-      res.status(500).send(err); // try to parse the actual error maybe
+    .catch(() => {
+      res.sendStatus(500); // try to parse the actual error maybe
     });
 });
 

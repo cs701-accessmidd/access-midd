@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import {
-  View, Button, TextInput
+  View, Button, TextInput, Text,
 } from 'react-native';
 
 import Editor from './components/Editor';
@@ -18,6 +18,7 @@ export default class App extends Component<{}> {
       mode: 'view',
       listView: false,
       buildings: [],
+      errorMessage: '',
     };
 
     this.getBuildings = this.getBuildings.bind(this);
@@ -33,54 +34,71 @@ export default class App extends Component<{}> {
       method: 'GET',
     }).then(response => response.json()).then((data) => {
       const buildings = data.map(obj => ({
+        id: obj.id,
         name: obj.name,
         code: obj.code,
         plan_url: obj.plan_url,
         coord: [obj.longitude, obj.latitude],
       }));
       this.setState({ buildings, filteredData: buildings });
+    }).catch(() => {
+      this.setState({ errorMessage: 'Network error: Unable to fetch buildings' });
     });
   }
 
   handleChange(e) {
-    // Variable to hold the original version of the list
-
     const { buildings: currentList } = this.state;
-    // Variable to hold the filtered list before putting into state
-    let filtered = {};
-
-    // If the search bar isn't empty
+    let filtered;
     if (e !== '') {
-      const term = e.toLowerCase();
-
       filtered = currentList.filter((item) => {
-        // change current item to lowercase
         const lc = item.name.toLowerCase();
-        // check to see if the current list item includes the search term
-        // If it does, it will be added to newList. Using lowercase eliminates
-        // issues with capitalization in search terms and search content
-        return lc.includes(term);
+        return lc.includes(e.toLowerCase());
       });
     } else {
-      // If the search bar is empty, set newList to original task list
       filtered = currentList;
     }
-    // Set the filtered state based on what our rules added to newList
-    this.setState({
-      filteredData: filtered,
-    });
+    this.setState({ filteredData: filtered });
   }
 
   handleEditorReturn(newBuilding) {
-    if (newBuilding) { // Not a cancel
+    if (newBuilding) {
       const { detailPoint, buildings } = this.state;
       const i = buildings.indexOf(detailPoint);
       if (i !== -1) { // if editing an existing building
-        // delete term from data
-        buildings.splice(i, 1);// removes article from data
+        fetch(`http://localhost:3000/building/${detailPoint.id}`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newBuilding),
+        }).then((response) => {
+          if (response.status === 200) {
+            this.setState({ errorMessage: '' });
+            this.getBuildings();
+          } else {
+            this.setState({ errorMessage: 'Unable to update building' });
+          }
+        });
+      } else { // adding a new building
+        fetch('http://localhost:3000/buildings/new', {
+          method: 'PUT',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newBuilding),
+        }).then((response) => {
+          if (response.status === 201) {
+            this.setState({ errorMessage: '' });
+            this.getBuildings();
+          } else if (response.status === 409) {
+            this.setState({ errorMessage: 'Building with this name already exists' });
+          } else {
+            this.setState({ errorMessage: 'Unable to create building' });
+          }
+        });
       }
-      buildings.push(newBuilding);
-      this.setState({ buildings });
     }
     this.setState({ mode: 'view' });
   }
@@ -88,7 +106,7 @@ export default class App extends Component<{}> {
 
   render() {
     const {
-      detailPoint, filteredData, mode, listView
+      detailPoint, filteredData, mode, listView, errorMessage
     } = this.state;
 
     const view = listView
@@ -104,9 +122,15 @@ export default class App extends Component<{}> {
     const newButton = (
       <Button
         title="New Building"
-        onPress={() => { this.handleChange(''); this.setState({ mode: 'edit', detailPoint: null }); }}
+        onPress={() => {
+          this.handleChange('');
+          this.setState({ mode: 'edit', detailPoint: null });
+        }}
       />
     );
+    const message = errorMessage !== ''
+      ? <Text>{errorMessage}</Text>
+      : null;
 
     if (mode === 'view') {
       return (
@@ -114,6 +138,7 @@ export default class App extends Component<{}> {
           {view}
           {viewButton}
           {newButton}
+          {message}
           <TextInput
             style={{ height: 50, borderColor: 'gray', borderWidth: 1.5 }}
             onChangeText={(text) => { this.handleChange(text); }}
