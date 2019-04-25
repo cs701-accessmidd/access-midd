@@ -25,30 +25,30 @@ app.put('/buildings/new', (req, res) => {
   knex('buildings')
     .select('*')
     .whereRaw('name = ?', [req.body.name])
-    .then((result => {
+    .then((result) => {
       if (result.length > 1) {
-        res.status(409).send({ error: 'Conflict: building already exists'});
+        res.status(409).send({ error: 'Conflict: building already exists' });
         // conflict error code to indicate attempted duplicate entry
       } else {
-        new_building = Object.assign(req.body, { created_at: Date.now() });
-        knex('buildings').insert(new_building).then(result => {
-          res.status(201).send(result); // code for successfully created item
+        const newBuilding = Object.assign(req.body, { created_at: Date.now() });
+        knex('buildings').insert(newBuilding).then((result2) => {
+          res.status(201).send(result2); // code for successfully created item
         }).catch((err) => {
           res.status(500).send(err); // try to parse the actual error maybe
         });
       }
-    }));
+    });
 });
 
-// TODO: route to add info to existing building
 app.post('/building/:id', (req, res) => {
-  update_obj = Object.assign(req.body, { updated_at: Date.now() });
+  const updateObj = Object.assign(req.body, { updated_at: Date.now() });
   knex('buildings')
     .where('id', '=', req.params.id)
-    .update(update_obj)
-    .then(result => {
+    .update(updateObj)
+    .then((result) => {
       res.status(200).send(result); // code for success
-    }).catch(err => {
+    })
+    .catch((err) => {
       res.status(500).send(err); // try to parse the actual error maybe
     });
 });
