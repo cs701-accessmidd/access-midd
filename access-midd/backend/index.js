@@ -44,7 +44,7 @@ app.put('/buildings/new', (req, res) => {
 app.post('/building/:id', (req, res) => {
   update_obj = Object.assign(req.body, { updated_at: Date.now() });
   knex('buildings')
-    .where('id', '=', id)
+    .where('id', '=', req.params.id)
     .update(update_obj)
     .then(result => {
       res.status(200).send(result); // code for success
