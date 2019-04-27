@@ -3,17 +3,68 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const knex_import = require('knex');
+const knexImport = require('knex');
 const knexConfig = require('./knexfile');
 
-const knex = knex_import(knexConfig[process.env.NODE_ENV || 'development']);
+const knex = knexImport(knexConfig[process.env.NODE_ENV || 'development']);
+
+app.use(express.json());
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
 app.get('/buildings', (req, res) => {
+  // TODO: add filtering via a query parameter
   knex('buildings').select().then((rows) => {
-    res.send(rows);
+    res.json(rows);
   });
+});
+
+app.put('/buildings/new', (req, res) => {
+  // there's definitely a better way to do this than make two queries
+  // maybe combine routes as insert on duplicate key update?
+  knex('buildings')
+    .select('*')
+    .whereRaw('name = ?', [req.body.name])
+    .then((result) => {
+      if (result.length > 1) {
+        res.status(409).send({ error: 'Conflict: building already exists' });
+        // conflict error code to indicate attempted duplicate entry
+      } else {
+        const newBuilding = {
+          name: req.body.name,
+          code: req.body.code,
+          plan_url: req.body.plan_url || '',
+          latitude: req.body.coord[1],
+          longitude: req.body.coord[0],
+          created_at: Date.now(),
+        };
+        knex('buildings').insert(newBuilding).then(() => {
+          res.sendStatus(201); // code for successfully created item
+        }).catch(() => {
+          res.sendStatus(500); // try to parse the actual error maybe
+        });
+      }
+    });
+});
+
+app.post('/building/:id', (req, res) => {
+  const updateObj = {
+    name: req.body.name,
+    code: req.body.code,
+    plan_url: req.body.plan_url || '',
+    latitude: req.body.coord[1],
+    longitude: req.body.coord[0],
+    updated_at: Date.now(),
+  };
+  knex('buildings')
+    .where('id', '=', req.params.id)
+    .update(updateObj)
+    .then(() => {
+      res.sendStatus(200); // code for success
+    })
+    .catch(() => {
+      res.sendStatus(500); // try to parse the actual error maybe
+    });
 });
 
 app.listen(port, () => {
