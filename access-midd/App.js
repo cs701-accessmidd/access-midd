@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import {
-  View, TextInput
+  View, TextInput, Text,
 } from 'react-native';
 
 import Editor from './components/Editor';
@@ -9,67 +9,99 @@ import ListView from './components/ListView';
 import MapView from './components/MapView';
 import Menu from './components/Menu';
 
-import data from './data/buildings.json';
-
 export default class App extends Component<{}> {
   constructor() {
     super();
-    this.data = data;
-    this.data.sort((a, b) => ((a.name > b.name) ? 1 : -1));
-
 
     this.state = {
       detailPoint: null,
-      filteredData: data,
+      filteredData: [],
       mode: 'view',
       listView: false,
       directionsView: false,
       menu: false,
+      buildings: [],
+      errorMessage: '',
     };
+
+    this.getBuildings = this.getBuildings.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillMount() {
+    this.getBuildings();
+  }
 
-  handleChange(e) {
-    // Variable to hold the original version of the list
-
-    const currentList = this.data;
-    // Variable to hold the filtered list before putting into state
-    let filtered = {};
-
-    // If the search bar isn't empty
-    if (e !== '') {
-      const term = e.toLowerCase();
-
-      filtered = currentList.filter((item) => {
-        // change current item to lowercase
-        const lc = item.name.toLowerCase();
-        // check to see if the current list item includes the search term
-        // If it does, it will be added to newList. Using lowercase eliminates
-        // issues with capitalization in search terms and search content
-        return lc.includes(term);
-      });
-    } else {
-      // If the search bar is empty, set newList to original task list
-      filtered = currentList;
-    }
-    // Set the filtered state based on what our rules added to newList
-
-    this.setState({
-      filteredData: filtered,
+  getBuildings() {
+    fetch('http://localhost:3000/buildings', {
+      method: 'GET',
+    }).then(response => response.json()).then((data) => {
+      const buildings = data.map(obj => ({
+        id: obj.id,
+        name: obj.name,
+        code: obj.code,
+        plan_url: obj.plan_url,
+        coord: [obj.longitude, obj.latitude],
+      }));
+      this.setState({ buildings, filteredData: buildings });
+    }).catch(() => {
+      this.setState({ errorMessage: 'Network error: Unable to fetch buildings' });
     });
   }
 
+  handleChange(e) {
+    const { buildings: currentList } = this.state;
+    let filtered;
+    if (e !== '') {
+      filtered = currentList.filter((item) => {
+        const lc = item.name.toLowerCase();
+        return lc.includes(e.toLowerCase());
+      });
+    } else {
+      filtered = currentList;
+    }
+    this.setState({ filteredData: filtered });
+  }
+
   handleEditorReturn(newBuilding) {
-    if (newBuilding) { // Not a cancel
-      const { detailPoint } = this.state;
-      const i = this.data.indexOf(detailPoint);
+    if (newBuilding) {
+      const { detailPoint, buildings } = this.state;
+      const i = buildings.indexOf(detailPoint);
       if (i !== -1) { // if editing an existing building
-        // delete term from data
-        this.data.splice(i, 1);// removes article from data
+        fetch(`http://localhost:3000/building/${detailPoint.id}`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newBuilding),
+        }).then((response) => {
+          if (response.status === 200) {
+            this.setState({ errorMessage: '' });
+            this.getBuildings();
+          } else {
+            this.setState({ errorMessage: 'Unable to update building' });
+          }
+        });
+      } else { // adding a new building
+        fetch('http://localhost:3000/buildings/new', {
+          method: 'PUT',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newBuilding),
+        }).then((response) => {
+          if (response.status === 201) {
+            this.setState({ errorMessage: '' });
+            this.getBuildings();
+          } else if (response.status === 409) {
+            this.setState({ errorMessage: 'Building with this name already exists' });
+          } else {
+            this.setState({ errorMessage: 'Unable to create building' });
+          }
+        });
       }
-      this.data.push(newBuilding);
-      this.data.sort((a, b) => ((a.name > b.name) ? 1 : -1));
     }
     this.setState({ mode: 'view' });
   }
@@ -77,7 +109,7 @@ export default class App extends Component<{}> {
 
   render() {
     const {
-      detailPoint, filteredData, mode, listView, menu, directionsView
+      detailPoint, filteredData, mode, listView, menu, directionsView, errorMessage
     } = this.state;
 
     const view = listView
@@ -94,11 +126,15 @@ export default class App extends Component<{}> {
           placeholder="Search Buildings..."
         />
       );
+    const message = errorMessage !== ''
+      ? <Text>{errorMessage}</Text>
+      : null;
 
     if (mode === 'view') {
       return (
         <View style={{ flex: 1, paddingTop: '10%' }}>
           <View style={{ flexDirection: 'row' }}>
+            {message}
             {searchBar}
             <Menu
               style={{ justifyContent: 'flex-end', width: '25%' }}

@@ -15,6 +15,13 @@ import PropTypes from 'prop-types';
 import { BuildingShape } from './Details';
 import BuildingContainer from './BuildingContainer';
 
+const nameSort = (obj1, obj2) => {
+  const s1 = obj1.name.toLowerCase();
+  const s2 = obj2.name.toLowerCase();
+  if (s1 < s2) return -1;
+  if (s1 > s2) return 1;
+  return 0;
+};
 
 function ListView(props) {
   const { filteredData } = props;
@@ -22,7 +29,7 @@ function ListView(props) {
     <View style={{ flex: 1 }}>
       <FlatList
         style={{ height: 50, borderColor: 'gray', borderWidth: 1.5 }}
-        data={filteredData}
+        data={filteredData.sort(nameSort)}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <BuildingContainer

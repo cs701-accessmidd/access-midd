@@ -184,7 +184,7 @@ class MapView extends Component {
             <MapboxGL.PointAnnotation
               id={point.code}
               title={point.name}
-              key={point.code}
+              key={point.id}
               selected
               coordinate={point.coord}
               onSelected={() => this.setState({ detailPoint: point })}
