@@ -28,13 +28,17 @@ app.put('/buildings/new', (req, res) => {
         // conflict error code to indicate attempted duplicate entry
       } else {
         const newBuilding = {
+          address: req.body.address || '',
           name: req.body.name,
           code: req.body.code,
-          plan_url: req.body.plan_url || '',
           latitude: req.body.coord[1],
           longitude: req.body.coord[0],
-          created_at: Date.now(),
+          acc_entry: req.body.acc_entry,
+          acc_restroom: req.body.acc_restroom,
+          elevator: req.body.elevator,
           comment: req.body.other || '',
+          plan_url: req.body.plan_url || '',
+          created_at: Date.now(),
         };
         knex('buildings').insert(newBuilding).then(() => {
           res.sendStatus(201); // code for successfully created item
@@ -49,12 +53,14 @@ app.post('/building/:id', (req, res) => {
   const updateObj = {
     name: req.body.name,
     code: req.body.code,
-    plan_url: req.body.plan_url || '',
     latitude: req.body.coord[1],
     longitude: req.body.coord[0],
     updated_at: Date.now(),
     comment: req.body.other || '',
   };
+  if (req.body.plan_url) {
+    updateObj[plan_url] = req.body.plan_url;
+  }
   knex('buildings')
     .where('id', '=', req.params.id)
     .update(updateObj)
