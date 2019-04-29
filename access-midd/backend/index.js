@@ -10,12 +10,9 @@ const knex = knexImport(knexConfig[process.env.NODE_ENV || 'development']);
 
 app.use(express.json());
 
-app.get('/', (req, res) => res.send('Hello World!'));
-
 app.get('/buildings', (req, res) => {
-  // TODO: add filtering via a query parameter
   knex('buildings').select().then((rows) => {
-    res.json(rows);
+    res.json(rows.map(obj => Object.assign(obj, { coord: [obj.longitude, obj.latitude] })));
   });
 });
 
@@ -37,6 +34,7 @@ app.put('/buildings/new', (req, res) => {
           latitude: req.body.coord[1],
           longitude: req.body.coord[0],
           created_at: Date.now(),
+          comment: req.body.other || '',
         };
         knex('buildings').insert(newBuilding).then(() => {
           res.sendStatus(201); // code for successfully created item
@@ -55,6 +53,7 @@ app.post('/building/:id', (req, res) => {
     latitude: req.body.coord[1],
     longitude: req.body.coord[0],
     updated_at: Date.now(),
+    comment: req.body.other || '',
   };
   knex('buildings')
     .where('id', '=', req.params.id)
