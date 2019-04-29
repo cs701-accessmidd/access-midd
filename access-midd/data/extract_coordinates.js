@@ -10,9 +10,9 @@ function readCSV(filename) {
       code: row[2],
       latitude: Number(row[8]),
       longitude: Number(row[9]),
-      acc_entry: row[3] || '',
-      acc_restroom: row[4] || '',
-      elevator: row[5] || '',
+      acc_entry: row[3] === 'yes' ? true : false,
+      acc_restroom: row[4] === 'yes' ? true : false,
+      elevator: row[5] === 'yes' ? true : false,
       comment: row[6] || '',
       plan_url: row[7] || '',
     };
