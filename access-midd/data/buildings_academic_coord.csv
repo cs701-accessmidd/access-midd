@@ -1,68 +1,68 @@
-,Address,Building Name,AKA,Accessible Entry?,Accessible Restroom?,Public Elevator?,Comment,What you can find? (List of strings),Floor Plans (String or pdf)  x,latitude,longitude
-0,534 College Street,Adirondack House,CCI,yes,no,no,1st floor access only. Coltrane Lounge not accessible,"[""CCI"", ""Coltrane"", ""Bike Shop""]",http://www.middlebury.edu/media/view/287370/original/adirondack-coltrane_lounge,41.2024657755102,-75.9938061428571
-1,23 Adirondack View,Event Management,,no,no,no,,,,43.9802193853665,-73.3176420991602
-2,75 Adirondack View,Pottery (75 Adirondack View),,no,no,no,,,,43.9801969518632,-73.3182116843615
-3,455 South Main Street,Athletic Alumni Stadium,,yes,yes,no,press box accessible on first floor,,,38.0776082933693,-120.551083638246
-4,219 South Main Street,Peterson Family Athletics Complex,,,,,,,http://www.middlebury.edu/media/view/82041/original/Peterson_Family_Athletic_Complex.pdf,38.0799685833222,-120.555113565614
-5,219 South Main Street,Athletics - Kenyon Arena,Kenyon,yes,yes,yes,press box and ice surface not accessbile,,http://www.middlebury.edu/media/view/81101/original/Chip_Kenyon_85_Arena.pdf,38.0799685833222,-120.555113565614
-6,219 South Main Street,Athletics - Kenyon Lounge,,,,,,,http://www.middlebury.edu/media/view/81261/original/Kenyon_Lounge.pdf,38.0799685833222,-120.555113565614
-7,219 South Main Street,Athletics - Memorial Field House,,yes,no,no,1983/84,,http://www.middlebury.edu/media/view/81981/original/Pepin_Gym_1st_floor.pdf,38.0799685833222,-120.555113565614
-8,219 South Main Street,Athletics - Natatorium,,yes,yes,no,,,,38.0799685833222,-120.555113565614
-9,219 South Main Street,Athletics - Nelson Arena,Nelson,yes,no,no,,,http://www.middlebury.edu/media/view/81941/original/Nelson_Arena1.pdf,38.0799685833222,-120.555113565614
-10,219 South Main Street,Athletics - Squash Courts,,yes,yes,no,,,,38.0799685833222,-120.555113565614
-11,219 South Main Street,Athletics - Virtue Field House,,yes,yes,yes,,,,38.0799685833222,-120.555113565614
-12,219 South Main Street,Athletics - Fitness Center,,yes,no,no,,,,38.0799685833222,-120.555113565614
-13,99 Shannon Street,Atwater Commons Dining Hall,Atwater Dining,yes,yes,yes,,,,42.249346,-71.789011
-14,275 Weybridge Street,"Atwater Commons House, Nichols House",,no,no,no,,,,-33.9693657,18.6559743
-15,15 Old Chapel Road,Axinn Center At Starr Library,Axinn,yes,yes,yes,,,http://www.middlebury.edu/media/view/80091/original/Axinn_1st_floor.pdf,30.7459320394472,-95.3967588199631
-16,15 Old Chapel Road,Axinn Center At Starr Library (first floor),Axinn,yes,yes,yes,,,http://www.middlebury.edu/media/view/81141/original/Axinn_2nd_floor.pdf,30.7459320394472,-95.3967588199631
-17,161 Adirondack View,Bowker Office Building,,yes,yes,no,entry level only,,,43.9806046942853,-73.3187964530132
-18,132 Blinn Lane,Brainerd Commons House,,yes,yes,no,"lift to first floor is inside the garage, no signage",,,37.8030041538462,-81.1617521538462
-19,452 College Street,Carr Hall,AFC,yes,yes,yes,access through ground floor level,,http://www.middlebury.edu/media/view/261848/original/carr_1st_floor.pdf,41.20296875,-75.9941055
-20,136 South Main Street,Centeno House,Porter Medical Center,yes,yes,yes,access by parking lot entry,,,38.079679483126,-120.554626453666
-21,135 South Main Street,Charles P. Scott Spiritual And Religious Life,Scott Center,yes,yes,no,first floor only,,,38.0805471279353,-120.556356393923
-22,56 Hillcrest Road,Chellis House,,yes,yes,no,first floor only,,,-37.6753483,176.1437046
-23,204 College Street,"204 College Street, NE Review Offices",,no,no,no,,,,44.01136125,-73.1736483582326
-24,46 South Street,Cook Commons House,,yes,no,no,,,,44.006189,-73.1708199078139
-25,110 Storrs Avenue,Davis Library,Davis,yes,yes,yes,,"[""CTLR"", ""Media Lab""]",http://www.middlebury.edu/media/view/81321/original/Library_1st_floor.pdf,44.0095156,-73.1744606104885
-26,110 Storrs Avenue,Davis Library (second floor),,yes,yes,yes,,,http://www.middlebury.edu/media/view/81481/original/Library_2nd_floor.pdf,44.0095156,-73.1744606104885
-27,110 Storrs Avenue,Davis Library (third floor),,yes,yes,yes,,,http://www.middlebury.edu/media/view/81501/original/Library_3rd_floor.pdf,44.0095156,-73.1744606104885
-28,131 South Main Street,Emma Willard House,Admissions,yes,yes,no,first floor only,,,38.0805167133142,-120.55631029176
-29,24 Hillcrest Road,Farrell House,,no,no,no,,,,52.5991557,-1.1154113
-30,75 Franklin Street,"75 Franklin Street, Bread Loaf School of Eng",,no,no,no,,,,44.0102901,-73.172583475478
-31,203 Freeman Way,Freeman International Center,FIC,yes,no,yes,"most places not accessible, seminar rooms are","[""UPS""]",http://www.middlebury.edu/media/view/81121/original/FIC_Hamlin-Bunker_2nd_floor.pdf,35.1764205983162,-79.513160582307
-32,399 Golf Course Road,Hadley Barn,,no,no,no,,,http://www.middlebury.edu/media/view/76501/original/Hadley_Barn.pdf,40.9118513576842,-75.3066395610526
-33,399 Golf Course Road,Hadley House,,yes,no,no,,,,40.9118513576842,-75.3066395610526
-34,123 South Main Street,Hesselgrave House,,no,no,no,,,,38.0804558840718,-120.556218087435
-35,531 College Street,Franklin Environmental Center at Hillcrest,Hillcrest,yes,yes,yes,,,http://www.middlebury.edu/media/view/81181/original/Hillcrest_1st_floor_2009.pdf,41.2025404489796,-75.9936127142857
-36,78 Chateau Road,Johnson Memorial Building,Johnson,no,no,no,,,http://www.middlebury.edu/media/view/81241/original/Johnson_Memorial_2nd_Floor_Pit.pdf,37.7063289710508,-89.1957512271933
-37,217 Golf Course Road,Kirk Alumni Center,,yes,yes,no,main level conference area only,,http://www.middlebury.edu/media/view/81281/original/Kirk_Alumni_Center.pdf,40.9059993169336,-75.3029448786811
-38,152 College Street,Kitchel House,,yes,yes,no,,,,44.0115247,-73.1724117854715
-39,72 Porter Field Road,Mahaney Center For The Arts,CFA,yes,yes,yes,several green rooms do not have accessible restrooms,,http://www.middlebury.edu/media/view/81091/original/CFA_2nd_floor.pdf,44.00520995,-73.1761217008499
-40,72 Porter Field Road,Mahaney Center For The Arts (first floor),Middlebury Art Museum,,,,,,http://www.middlebury.edu/media/view/81081/original/CFA_1st_floor.pdf,44.00520995,-73.1761217008499
-41,152 Maple Street,Marble Works (152 Maple St.),,yes,no,yes,,,,41.3341121428571,-75.7979124285714
-42,276 Bicentennial Way,McCardell Bicentennial Hall,BiHall,yes,yes,yes,"library restrooms not accessible, no restrooms at roof, no access to observatory","[""Observatory""]",http://www.middlebury.edu/media/view/249612/original/McCardell_BiHall_1st_floor.pdf,38.4727118324194,-122.720653797399
-43,14 Old Chapel Road,McCullough Student Center,McCullough,yes,yes,yes,3rd floor west tower space is not accessible,"[""The Grille"", ""Midd Express"", ""Crossroads"", ""Wilson Hall"", ""Mail Center""]",http://www.middlebury.edu/media/view/81811/original/McCullough_Crest_Room-3rd_floor.pdf,30.7457662842347,-95.396769235282
-44,14 Old Chapel Road,Mitchell Green Lounge,,,,,,,http://www.middlebury.edu/media/view/81821/original/McCullough_Mitchell_Green_Lnge.pdf,30.7457662842347,-95.396769235282
-45,75 Hepburn Road,Mead Chapel,,yes,no,no,"no public restrooms, back of house not accessible",,http://www.middlebury.edu/media/view/81831/original/Mead_1st_floor.pdf,-36.8929713,174.6538666
-46,75 Hepburn Road,Mead Chapel (basement),,no,no,no,,,http://www.middlebury.edu/media/view/81841/original/Mead_Chapel_Basement_floor.pdf,-36.8929713,174.6538666
-47,427 College Street,Munroe Hall,,no,no,no,,,,41.2034323673469,-75.9941454489796
-48,9 Old Chapel Road,Old Chapel,,yes,yes,yes,accessible entry faces the library,,,30.74586152594,-95.3971915820809
-49,3 Mill Street,Old Mill,,no,no,no,,,,41.9422931,-71.2841009668616
-50,2 Court Street,Painter House,,yes,no,no,main level only,,,44.01358005,-73.1659540751616
-51,3 South Street,President's House,,yes,yes,no,first floor only,,,51.0052074,-0.151123361643833
-52,58 Hepburn Road,Proctor Hall,,yes,yes,yes,,"[""Bookstore""]",,-36.8943248,174.6519814
-53,809 College Street,Ginevan Recycling Center,,yes,no,no,no public restrooms,,,41.2000427777778,-75.9921036666667
-54,148 Hillcrest Road,Robert A. Jones House,RAJ,yes,yes,yes,,,http://www.middlebury.edu/media/view/83511/original/RAJ_2009_Floor_plan.pdf,44.0084880492016,-73.1802406103574
-55,26 Blinn Lane,Ross Commons House,,yes,yes,no,first floor only,,,44.0115965539881,-73.1822466659949
-56,Ross Dining Hall,Ross Commons Dining,,yes,yes,yes,,,,44.01055895,-73.1811103740683
-57,84 South Service Road,Service Building,,yes,yes,yes,ground and 2nd floor only,"[""Financial Aid Office""]",,41.7345513732321,-70.4773927367968
-58,95 South Main Street,"95 South Main Street, School of Hebrew",,no,no,no,,,,41.9442924744558,-71.2842321229841
-59,118 South Main Street,118 South Main Street,,yes,yes,no,first floor only,,,38.0804178657953,-120.556160459732
-60,125 South Main Street,Public Safety,PubSafe,yes,yes,yes,,,,38.0804710913824,-120.556241138516
-61,356 College Street,Sunderland Language Center,,yes,yes,no,first floor only,"[""Dana Auditorium""]",http://www.middlebury.edu/media/view/83671/original/Sunderland_1st_floor.pdf,43.6573303,-79.4042748
-62,50 Franklin Street,Twilight Hall,,yes,no,yes,restrooms could be accessible with modifications,,http://www.middlebury.edu/media/view/83681/original/Twilight_1st_floor.pdf,44.01089545,-73.1722055987457
-63,303 College Street,Warner Science,,no,no,no,,,http://www.middlebury.edu/media/view/83691/original/Warner_Hemi-2nd_floor.pdf,41.2043014583333,-75.9946752916667
-64,47 South Service Road,White Metal Building,,no,no,no,,,,41.7356153434442,-70.4785468773687
-65,115 Franklin Street,Wonnacott Commons,,no,no,no,,,,44.01013705,-73.1734382
-66,96 Chateau Road,Wright Theatre,,yes,yes,no,"first floor only, theater space not compliant",,http://www.middlebury.edu/media/view/83721/original/Wright_Theatre_1st_floor_2009.pdf,37.7063253971051,-89.1959274227193
+,Address,Building Name,AKA,Accessible Entry?,Accessible Restroom?,Public Elevator?,Comment,Floor Plans (String or pdf)  x,latitude,longitude
+0,534 College Street,Adirondack House,CCI,yes,no,no,1st floor access only. Coltrane Lounge not accessible,http://www.middlebury.edu/media/view/287370/original/adirondack-coltrane_lounge,44.01024355,-73.1797632
+1,23 Adirondack View,Event Management,,no,no,no,,,44.00825589,-73.18106856
+2,75 Adirondack View,Pottery (75 Adirondack View),,no,no,no,,,44.00873544,-73.18107696
+3,455 South Main Street,Athletic Alumni Stadium,,yes,yes,no,press box accessible on first floor,,44.0105193,-73.1712035
+4,219 South Main Street,Peterson Family Athletics Complex,,,,,,http://www.middlebury.edu/media/view/82041/original/Peterson_Family_Athletic_Complex.pdf,44.0045596,-73.1773789
+5,219 South Main Street,Athletics - Kenyon Arena,Kenyon,yes,yes,yes,press box and ice surface not accessbile,http://www.middlebury.edu/media/view/81101/original/Chip_Kenyon_85_Arena.pdf,44.0045596,-73.1773789
+6,219 South Main Street,Athletics - Kenyon Lounge,,,,,,http://www.middlebury.edu/media/view/81261/original/Kenyon_Lounge.pdf,44.0045596,-73.1773789
+7,219 South Main Street,Athletics - Memorial Field House,,yes,no,no,1983/84,http://www.middlebury.edu/media/view/81981/original/Pepin_Gym_1st_floor.pdf,44.0045596,-73.1773789
+8,219 South Main Street,Athletics - Natatorium,,yes,yes,no,,,44.0045596,-73.1773789
+9,219 South Main Street,Athletics - Nelson Arena,Nelson,yes,no,no,,http://www.middlebury.edu/media/view/81941/original/Nelson_Arena1.pdf,44.0045596,-73.1773789
+10,219 South Main Street,Athletics - Squash Courts,,yes,yes,no,,,44.0045596,-73.1773789
+11,219 South Main Street,Athletics - Virtue Field House,,yes,yes,yes,,,44.0045596,-73.1773789
+12,219 South Main Street,Athletics - Fitness Center,,yes,no,no,,,44.0045596,-73.1773789
+13,99 Shannon Street,Atwater Commons Dining Hall,Atwater Dining,yes,yes,yes,,,44.01290858,-73.17534273
+14,275 Weybridge Street,Atwater Commons House (Nichols House),,no,no,no,,,,
+15,15 Old Chapel Road,Axinn Center At Starr Library,Axinn,yes,yes,yes,,http://www.middlebury.edu/media/view/80091/original/Axinn_1st_floor.pdf,44.0074851,-73.17509337
+16,15 Old Chapel Road,Axinn Center At Starr Library (first floor),Axinn,yes,yes,yes,,http://www.middlebury.edu/media/view/81141/original/Axinn_2nd_floor.pdf,44.0074851,-73.17509337
+17,161 Adirondack View,Bowker Office Building,,yes,yes,no,entry level only,,44.00952856,-73.18109086
+18,132 Blinn Lane,Brainerd Commons House,,yes,yes,no,lift to first floor is inside the garage; no signage,,44.0106489,-73.18203014
+19,452 College Street,Carr Hall,AFC,yes,yes,yes,access through ground floor level,http://www.middlebury.edu/media/view/261848/original/carr_1st_floor.pdf,44.01043493,-73.17767997
+20,136 South Main Street,Centeno House,Porter Medical Center,yes,yes,yes,access by parking lot entry,,44.00737567,-73.17481372
+21,135 South Main Street,Charles P. Scott Spiritual And Religious Life,Scott Center,yes,yes,no,first floor only,,44.0073187,-73.17465501
+22,56 Hillcrest Road,Chellis House,,yes,yes,no,first floor only,,44.00943758,-73.18026013
+23,204 College Street,204 College Street (NE Review Offices),,no,no,no,,,44.01136125,-73.17364836
+24,46 South Street,Cook Commons House,,yes,no,no,,,44.006189,-73.17081991
+25,110 Storrs Avenue,Davis Library,Davis,yes,yes,yes,,http://www.middlebury.edu/media/view/81321/original/Library_1st_floor.pdf,44.0095156,-73.17446061
+26,110 Storrs Avenue,Davis Library (second floor),,yes,yes,yes,,http://www.middlebury.edu/media/view/81481/original/Library_2nd_floor.pdf,44.0095156,-73.17446061
+27,110 Storrs Avenue,Davis Library (third floor),,yes,yes,yes,,http://www.middlebury.edu/media/view/81501/original/Library_3rd_floor.pdf,44.0095156,-73.17446061
+28,131 South Main Street,Emma Willard House,Admissions,yes,yes,no,first floor only,,44.00773375,-73.17406771
+29,24 Hillcrest Road,Farrell House,,no,no,no,,,44.00976789,-73.18026346
+30,75 Franklin Street,75 Franklin Street (Bread Loaf School of English),,no,no,no,,,44.0102901,-73.17258348
+31,203 Freeman Way,Freeman International Center,FIC,yes,no,yes,most places not accessible; seminar rooms are,http://www.middlebury.edu/media/view/81121/original/FIC_Hamlin-Bunker_2nd_floor.pdf,44.015858,-73.178996
+32,399 Golf Course Road,Hadley Barn,,no,no,no,,http://www.middlebury.edu/media/view/76501/original/Hadley_Barn.pdf,43.998271,-73.182482
+33,399 Golf Course Road,Hadley House,,yes,no,no,,,43.998271,-73.182482
+34,123 South Main Street,Hesselgrave House,,no,no,no,,,44.00812723,-73.1739303
+35,531 College Street,Franklin Environmental Center at Hillcrest,Hillcrest,yes,yes,yes,,http://www.middlebury.edu/media/view/81181/original/Hillcrest_1st_floor_2009.pdf,44.01024178,-73.17978405
+36,78 Chateau Road,Johnson Memorial Building,Johnson,no,no,no,,http://www.middlebury.edu/media/view/81241/original/Johnson_Memorial_2nd_Floor_Pit.pdf,44.01124481,-73.17696188
+37,217 Golf Course Road,Kirk Alumni Center,,yes,yes,no,main level conference area only,http://www.middlebury.edu/media/view/81281/original/Kirk_Alumni_Center.pdf,44.00016135,-73.18193659
+38,152 College Street,Kitchel House,,yes,yes,no,,,44.0115247,-73.17241179
+39,72 Porter Field Road,Mahaney Center For The Arts,CFA,yes,yes,yes,several green rooms do not have accessible restrooms,http://www.middlebury.edu/media/view/81091/original/CFA_2nd_floor.pdf,44.00520995,-73.1761217
+40,72 Porter Field Road,Mahaney Center For The Arts (first floor),Middlebury Art Museum,,,,,http://www.middlebury.edu/media/view/81081/original/CFA_1st_floor.pdf,44.00520995,-73.1761217
+41,152 Maple Street,Marble Works (152 Maple St.),,yes,no,yes,,,44.014764,-73.17014164
+42,276 Bicentennial Way,McCardell Bicentennial Hall,BiHall,yes,yes,yes,library restrooms not accessible; no restrooms at roof; no access to observatory,http://www.middlebury.edu/media/view/249612/original/McCardell_BiHall_1st_floor.pdf,44.013977,-73.181971
+43,14 Old Chapel Road,McCullough Student Center,McCullough,yes,yes,yes,3rd floor west tower space is not accessible,http://www.middlebury.edu/media/view/81811/original/McCullough_Crest_Room-3rd_floor.pdf,44.00800774,-73.17652245
+44,14 Old Chapel Road,Mitchell Green Lounge,,,,,,http://www.middlebury.edu/media/view/81821/original/McCullough_Mitchell_Green_Lnge.pdf,44.00800774,-73.17652245
+45,75 Hepburn Road,Mead Chapel,,yes,no,no,no public restrooms; back of house not accessible,http://www.middlebury.edu/media/view/81831/original/Mead_1st_floor.pdf,44.00895926,-73.17933015
+46,75 Hepburn Road,Mead Chapel (basement),,no,no,no,,http://www.middlebury.edu/media/view/81841/original/Mead_Chapel_Basement_floor.pdf,44.00895926,-73.17933015
+47,427 College Street,Munroe Hall,,no,no,no,,,44.01018882,-73.17854974
+48,9 Old Chapel Road,Old Chapel,,yes,yes,yes,accessible entry faces the library,,44.00908695,-73.17606351
+49,3 Mill Street,Old Mill,,no,no,no,,,44.0132074,-73.1701623
+50,2 Court Street,Painter House,,yes,no,no,main level only,,44.01358005,-73.16595408
+51,3 South Street,President's House,,yes,yes,no,first floor only,,44.0106535,-73.17000835
+52,58 Hepburn Road,Proctor Hall,,yes,yes,yes,,,44.00867562,-73.17955287
+53,809 College Street,Ginevan Recycling Center,,yes,no,no,no public restrooms,,44.009809,-73.18326
+54,148 Hillcrest Road,Robert A. Jones House,RAJ,yes,yes,yes,,http://www.middlebury.edu/media/view/83511/original/RAJ_2009_Floor_plan.pdf,44.00848805,-73.18024061
+55,26 Blinn Lane,Ross Commons House,,yes,yes,no,first floor only,,44.01159655,-73.18224667
+56,Ross Dining Hall,Ross Commons Dining,,yes,yes,yes,,,44.01055895,-73.18111037
+57,84 South Service Road,Service Building,,yes,yes,yes,ground and 2nd floor only,,44.00758179,-73.17742006
+58,95 South Main Street,95 South Main Street,School of Hebrew,no,no,no,,,44.0105757,-73.17062611
+59,118 South Main Street,118 South Main Street,,yes,yes,no,first floor only,,44.00913575,-73.17321137
+60,125 South Main Street,Public Safety,PubSafe,yes,yes,yes,,,44.00815905,-73.17361715
+61,356 College Street,Sunderland Language Center,,yes,yes,no,first floor only,http://www.middlebury.edu/media/view/83671/original/Sunderland_1st_floor.pdf,44.0103183,-73.17894427
+62,50 Franklin Street,Twilight Hall,,yes,no,yes,restrooms could be accessible with modifications,http://www.middlebury.edu/media/view/83681/original/Twilight_1st_floor.pdf,44.01089545,-73.1722056
+63,303 College Street,Warner Science,,no,no,no,,http://www.middlebury.edu/media/view/83691/original/Warner_Hemi-2nd_floor.pdf,44.01054632,-73.17509821
+64,47 South Service Road,White Metal Building,,no,no,no,,,44.00801137,-73.17728454
+65,115 Franklin Street,Wonnacott Commons,,no,no,no,,,44.01013705,-73.1734382
+66,96 Chateau Road,Wright Theatre,,yes,yes,no,first floor only; theater space not compliant,http://www.middlebury.edu/media/view/83721/original/Wright_Theatre_1st_floor_2009.pdf,44.012427,-73.177291

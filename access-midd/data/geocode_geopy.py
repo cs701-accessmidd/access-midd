@@ -26,7 +26,7 @@ def encode_file(list_name):
 
     data = pd.read_csv(input_file, encoding='utf8')
     addresses = data["Address"].tolist()
-    lats, longs = geocode(addresses)
+    lats, longs = geocode(map(add_midd, addresses))
     data["latitude"] = lats
     data["longitude"] = longs
 

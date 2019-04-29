@@ -13,24 +13,24 @@ Address,Building Name,AKA,Accessible Entry?,Accessible Restroom?,Public Elevator
 219 South Main Street,Athletics - Virtue Field House,,yes,yes,yes,,,
 219 South Main Street,Athletics - Fitness Center,,yes,no,no,,,
 99 Shannon Street,Atwater Commons Dining Hall,Atwater Dining,yes,yes,yes,,,
-275 Weybridge Street,"Atwater Commons House, Nichols House",,no,no,no,,,
+275 Weybridge Street,Atwater Commons House (Nichols House),,no,no,no,,,
 15 Old Chapel Road,Axinn Center At Starr Library,Axinn,yes,yes,yes,,,http://www.middlebury.edu/media/view/80091/original/Axinn_1st_floor.pdf
 15 Old Chapel Road,Axinn Center At Starr Library (first floor),Axinn,yes,yes,yes,,,http://www.middlebury.edu/media/view/81141/original/Axinn_2nd_floor.pdf
 161 Adirondack View,Bowker Office Building,,yes,yes,no,entry level only,,
-132 Blinn Lane,Brainerd Commons House,,yes,yes,no,"lift to first floor is inside the garage, no signage",,
+132 Blinn Lane,Brainerd Commons House,,yes,yes,no,lift to first floor is inside the garage; no signage,,
 452 College Street,Carr Hall,AFC,yes,yes,yes,access through ground floor level,,http://www.middlebury.edu/media/view/261848/original/carr_1st_floor.pdf
 136 South Main Street,Centeno House,Porter Medical Center,yes,yes,yes,access by parking lot entry,,
 135 South Main Street,Charles P. Scott Spiritual And Religious Life,Scott Center,yes,yes,no,first floor only,,
 56 Hillcrest Road,Chellis House,,yes,yes,no,first floor only,,
-204 College Street,"204 College Street, NE Review Offices",,no,no,no,,,
+204 College Street,204 College Street (NE Review Offices),,no,no,no,,,
 46 South Street,Cook Commons House,,yes,no,no,,,
 110 Storrs Avenue,Davis Library,Davis,yes,yes,yes,,"[""CTLR"", ""Media Lab""]",http://www.middlebury.edu/media/view/81321/original/Library_1st_floor.pdf
 110 Storrs Avenue,Davis Library (second floor),,yes,yes,yes,,,http://www.middlebury.edu/media/view/81481/original/Library_2nd_floor.pdf
 110 Storrs Avenue,Davis Library (third floor),,yes,yes,yes,,,http://www.middlebury.edu/media/view/81501/original/Library_3rd_floor.pdf
 131 South Main Street,Emma Willard House,Admissions,yes,yes,no,first floor only,,
 24 Hillcrest Road,Farrell House,,no,no,no,,,
-75 Franklin Street,"75 Franklin Street, Bread Loaf School of Eng",,no,no,no,,,
-203 Freeman Way,Freeman International Center,FIC,yes,no,yes,"most places not accessible, seminar rooms are","[""UPS""]",http://www.middlebury.edu/media/view/81121/original/FIC_Hamlin-Bunker_2nd_floor.pdf
+75 Franklin Street,75 Franklin Street (Bread Loaf School of English),,no,no,no,,,
+203 Freeman Way,Freeman International Center,FIC,yes,no,yes,most places not accessible; seminar rooms are,"[""UPS""]",http://www.middlebury.edu/media/view/81121/original/FIC_Hamlin-Bunker_2nd_floor.pdf
 399 Golf Course Road,Hadley Barn,,no,no,no,,,http://www.middlebury.edu/media/view/76501/original/Hadley_Barn.pdf
 399 Golf Course Road,Hadley House,,yes,no,no,,,
 123 South Main Street,Hesselgrave House,,no,no,no,,,
@@ -41,10 +41,10 @@ Address,Building Name,AKA,Accessible Entry?,Accessible Restroom?,Public Elevator
 72 Porter Field Road,Mahaney Center For The Arts,CFA,yes,yes,yes,several green rooms do not have accessible restrooms,,http://www.middlebury.edu/media/view/81091/original/CFA_2nd_floor.pdf
 72 Porter Field Road,Mahaney Center For The Arts (first floor),Middlebury Art Museum,,,,,,http://www.middlebury.edu/media/view/81081/original/CFA_1st_floor.pdf
 152 Maple Street,Marble Works (152 Maple St.),,yes,no,yes,,,
-276 Bicentennial Way,McCardell Bicentennial Hall,BiHall,yes,yes,yes,"library restrooms not accessible, no restrooms at roof, no access to observatory","[""Observatory""]",http://www.middlebury.edu/media/view/249612/original/McCardell_BiHall_1st_floor.pdf
+276 Bicentennial Way,McCardell Bicentennial Hall,BiHall,yes,yes,yes,library restrooms not accessible; no restrooms at roof; no access to observatory,"[""Observatory""]",http://www.middlebury.edu/media/view/249612/original/McCardell_BiHall_1st_floor.pdf
 14 Old Chapel Road,McCullough Student Center,McCullough,yes,yes,yes,3rd floor west tower space is not accessible,"[""The Grille"", ""Midd Express"", ""Crossroads"", ""Wilson Hall"", ""Mail Center""]",http://www.middlebury.edu/media/view/81811/original/McCullough_Crest_Room-3rd_floor.pdf
 14 Old Chapel Road,Mitchell Green Lounge,,,,,,,http://www.middlebury.edu/media/view/81821/original/McCullough_Mitchell_Green_Lnge.pdf
-75 Hepburn Road,Mead Chapel,,yes,no,no,"no public restrooms, back of house not accessible",,http://www.middlebury.edu/media/view/81831/original/Mead_1st_floor.pdf
+75 Hepburn Road,Mead Chapel,,yes,no,no,no public restrooms; back of house not accessible,,http://www.middlebury.edu/media/view/81831/original/Mead_1st_floor.pdf
 75 Hepburn Road,Mead Chapel (basement),,no,no,no,,,http://www.middlebury.edu/media/view/81841/original/Mead_Chapel_Basement_floor.pdf
 427 College Street,Munroe Hall,,no,no,no,,,
 9 Old Chapel Road,Old Chapel,,yes,yes,yes,accessible entry faces the library,,
@@ -57,7 +57,7 @@ Address,Building Name,AKA,Accessible Entry?,Accessible Restroom?,Public Elevator
 26 Blinn Lane,Ross Commons House,,yes,yes,no,first floor only,,
 Ross Dining Hall,Ross Commons Dining,,yes,yes,yes,,,
 84 South Service Road,Service Building,,yes,yes,yes,ground and 2nd floor only,"[""Financial Aid Office""]",
-95 South Main Street,"95 South Main Street, School of Hebrew",,no,no,no,,,
+95 South Main Street,95 South Main Street,School of Hebrew,no,no,no,,,
 118 South Main Street,118 South Main Street,,yes,yes,no,first floor only,,
 125 South Main Street,Public Safety,PubSafe,yes,yes,yes,,,
 356 College Street,Sunderland Language Center,,yes,yes,no,first floor only,"[""Dana Auditorium""]",http://www.middlebury.edu/media/view/83671/original/Sunderland_1st_floor.pdf
@@ -65,4 +65,4 @@ Ross Dining Hall,Ross Commons Dining,,yes,yes,yes,,,
 303 College Street,Warner Science,,no,no,no,,,http://www.middlebury.edu/media/view/83691/original/Warner_Hemi-2nd_floor.pdf
 47 South Service Road,White Metal Building,,no,no,no,,,
 115 Franklin Street,Wonnacott Commons,,no,no,no,,,
-96 Chateau Road,Wright Theatre,,yes,yes,no,"first floor only, theater space not compliant",,http://www.middlebury.edu/media/view/83721/original/Wright_Theatre_1st_floor_2009.pdf
+96 Chateau Road,Wright Theatre,,yes,yes,no,first floor only; theater space not compliant,,http://www.middlebury.edu/media/view/83721/original/Wright_Theatre_1st_floor_2009.pdf

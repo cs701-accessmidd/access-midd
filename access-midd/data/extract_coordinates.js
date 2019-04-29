@@ -4,17 +4,17 @@ function readCSV(filename) {
   const contents = fs.readFileSync(filename).toString().trim().split('\n');
   const values = contents.slice(1).map(str => str.split(',').slice(1));
   const data = values.map((row) => {
-    const inputName = row[6];
     return {
-      name:
-      code:
-      latitude:
-      longitude:
-      plan_url:
-      acc_entry:
-      acc_restroom:
-      elevator:
-      comment:
+      address: row[0],
+      name: row[1],
+      code: row[2],
+      latitude: Number(row[8]),
+      longitude: Number(row[9]),
+      acc_entry: row[3] || '',
+      acc_restroom: row[4] || '',
+      elevator: row[5] || '',
+      comment: row[6] || '',
+      plan_url: row[7] || '',
     };
   });
   return data;

@@ -1,58 +1,58 @@
-,Address,Building Name,Code,Accessible Entry?,Accessible Restroom?,Public Elevator?,Comment,What you can find? (List of strings),Floor Plans (String or pdf) http://www.middlebury.edu/student-life/community-living/residential-life/housing-information/flr_plans,latitude,longitude
-0,20 Adirondack View,20 Adirondack View,Japanese House,no,no,no,,,http://www.middlebury.edu/media/view/148241/original/AdirondackView20-JapaneseHse.pdf,43.9803875880663,-73.3175619609341
-1,33 Adirondack View,33 Adirondack View,Bungalow,no,no,no,,,http://www.middlebury.edu/media/view/254706/original/33_Adirondack_View_1st_Floor.pdf,43.9802165512231,-73.3177516860411
-2,97 Adirondack View,97 Adirondack View,PALANA,yes,yes,yes,Elevator to main level is from garage entry,,http://www.middlebury.edu/media/view/148251/original/AdirondackView97-PALANA.pdf,43.9801864897898,-73.3184526290824
-3,99 Adirondack View,99 Adirondack View,,no,no,no,,,http://www.middlebury.edu/media/view/148261/original/AdirondackView99.pdf,44.008378,-73.1810006584068
-4,18 Chateau Road,Allen Hall,,yes,yes,no,ground and first floor only,,http://www.middlebury.edu/system/files/media/AllenHall.pdf,30.23689875,-85.91608365
-5,120 Freeman Way,Atwater Commons Hall A,ATA,yes,yes,yes,"suites all visitible, single rooms accessible",,http://www.middlebury.edu/media/view/490322/original/ata_atwater_a_binder.pdf,33.5183367549109,-84.01450701914
-6,125 Freeman Way,Atwater Commons Hall B,ATB,yes,yes,yes,"suites all visitible, one suite ADA compliant",,http://www.middlebury.edu/media/view/490323/original/atb_atwater_b_binder.pdf,33.5181742086204,-84.0145493532131
-7,63 Chateau Road,"Battell Hall (South, Center, North)",,no,no,no,,,http://www.middlebury.edu/system/files/battell_27-jul-15_1.pdf,37.7064981206771,-89.1955858312853
-8,129 Adirondack View,Bowker House,Xenia,no,no,no,,,http://www.middlebury.edu/media/view/150361/original/Bowker-XeniaHse.pdf,43.9802695493061,-73.3187817496145
-9,428 Ridgeline Road,Brackett,,yes,yes,yes,no ADA signage,,http://www.middlebury.edu/media/view/490324/original/brk_brackett_binder.pdf,36.0568151914894,-80.9411865319149
-10,404 Ridgeline Road,Brooker,,yes,yes,yes,,,http://www.middlebury.edu/media/view/490325/original/bro_brooker_binder.pdf,36.0522854,-80.9316125
-11,139 Chateau Road,Le Chateau,,yes,yes,yes,first and ground floor. ADA restroom on lower level,,http://www.middlebury.edu/media/view/490326/original/cht_chateau_binder.pdf,36.6351179616962,-80.7321940462046
-12,207 Freeman Way,Coffrin Hall,,yes,yes,no,accessible restroom on level 4 only,,http://www.middlebury.edu/media/view/490692/original/cfncs_coffrin_binder.pdf,35.1762829791664,-79.513441842642
-13,220 College Street,220 College Street,,no,no,no,,,http://www.middlebury.edu/media/view/274217/original/collegest220.pdf,44.0113137,-73.1739581392843
-14,236 College Street,236 College Street,Portugese House,no,no,no,,,http://www.middlebury.edu/media/view/150411/original/CollegeSt236.pdf,41.2053050818472,-75.9955154171659
-15,248 College Street,248 College Street,Beach House,no,no,no,,,http://www.middlebury.edu/media/view/150421/original/CollegeSt248.pdf,44.01111095,-73.1746213143916
-16,637 College Street,637 College Street,Russian House,no,no,no,,,http://www.middlebury.edu/media/view/150571/original/CollegeSt637.pdf,41.2016308741106,-75.9932982778263
-17,40 College Street,Deanery (Max Kade House),German House,no,yes,lift,"exterior access compromised, interior lift to lower level accessible restroom",,http://www.middlebury.edu/media/view/150591/original/Deanery-GermanHse.pdf,43.6592043,-79.3975116
-18,496 College Street,Forest Hall,,yes,yes,yes,Forest west is not accessible,,http://www.middlebury.edu/system/files/media/FRE%20FRW%20Forest%20img%20binder.pdf,41.20276525,-75.9939845
-19,131 Franklin Street,131 Franklin Street,Hebrew House,no,no,no,,,http://www.middlebury.edu/media/view/150651/original/FranklinSt131-ArabicHse.pdf,44.01013105,-73.173676051527
-20,51 Franklin Street,51 Franklin,French House,yes,yes,no,needs accessible signage,,http://www.middlebury.edu/student-life/community-living/residential-life/housing-information/flr_plans/files/node/530124/edit?destination=mm/688538,44.0103851,-73.1721130197021
-21,489 College Street,Gifford Hall,,yes,*no,yes,only accessible restroom is in Gifford Annex,,http://www.middlebury.edu/media/view/490578/original/gfd_gifford_binder.pdf,41.202797625,-75.99400375
-22,160 HKML Way,Hadley Hall,,yes/no,yes,yes,"lounge space accessible, dorm rooms are not",,http://www.middlebury.edu/system/files/media/HDY%20Combined.pdf,,
-23,160 HKML Way,Miliken Hall,,yes/no,yes,yes,some dorm rooms are not accessible,,http://www.middlebury.edu/system/files/media/MLK%20Combined_0.pdf,,
-24,121 Hepburn Road,Hepburn Hall,,yes,*no,yes,"only accessible restroom is on first floor, north hall","[""Hepburn Zoo""]",http://www.middlebury.edu/media/view/490579/original/hpb_hepburn_binder.pdf,41.3471450165089,-72.8985351349494
-25,70 Hillcrest Road,70 Hillcrest Road,Queer Studies House (QSH),yes,yes,no,"first floor only, appliances not accessible",,http://www.middlebury.edu/system/files/media/hms_combined.pdf,44.0091744,-73.180519105142
-26,717 College Street,Homer Harris House,,no,no,no,,,http://www.middlebury.edu/media/view/150691/original/HomerHarrisHouse.pdf,41.2008369230769,-75.9925812307692
-27,70 Weybridge Street,Homestead House,,no,no,no,,,http://www.middlebury.edu/system/files/media/hms_combined.pdf,-33.9693657,18.6559743
-28,99 South Main Street,Jewett House,,yes,*no,no,plans for summer 2017 improvements,,http://www.middlebury.edu/media/view/150711/original/JewettHse.pdf,41.944382,-71.284229
-29,48 South Street,Kappa Delta Rho,KDR,no,no,no,,,http://www.middlebury.edu/media/view/150851/original/KDR.pdf,43.4341077711602,-65.6281687873655
-30,160 HKML Way,Kelly Hall & Lang Hall,,yes/no,yes,yes,"lounge space accessible, dorm rooms are not",,,,
-31,552 College Street,Laforce Hall,,yes,yes,yes,,,http://www.middlebury.edu/media/view/490327/original/laf_laforce_binder.pdf,41.202431244898,-75.9937855714286
-32,90 Hillcrest Road,Longwell House,,no,no,no,,,http://www.middlebury.edu/media/view/150871/original/Longwell-ItalianHse.pdf,42.5149667962207,-71.1136359738028
-33,46 Porter Field Road,Meeker House,,yes,yes,yes,except 3rd floor,,http://www.middlebury.edu/media/view/257569/original/meeker_house_dorm.pdf,44.0065412,-73.1752133363831
-34,98 South Main Street,The Mill,,no,no,no,,,http://www.middlebury.edu/media/view/150881/original/Mill.pdf,38.082337,-120.558765
-35,139 South Main Street,Munford House,,yes,yes,yes,except 3rd floor,,http://www.middlebury.edu/media/view/257586/original/Munford_House_Dorm.pdf,38.0805780402655,-120.556402157378
-36,5 Old Chapel Road,Painter Hall,,no,no,no,,,http://www.middlebury.edu/media/view/490581/original/ptr_painter_binder.pdf,30.7457075597942,-95.3974525715626
-37,260 Ridgeline Road,Palmer House,,yes,yes,yes,,,http://www.middlebury.edu/media/view/490328/original/plm_palmer_binder.pdf,30.6239673786253,-97.9386822328084
-38,536 College Street,Pearsons Hall,,no,no,no,,,http://www.middlebury.edu/media/view/490580/original/prs_pearsons_binder.pdf,41.2024619387755,-75.9938038571429
-39,122 Hillcrest Road,Perkins House,,yes,yes,no,first floor only,,http://www.middlebury.edu/media/view/150941/original/Perkins-SpanishHse.pdf,44.0087563947865,-73.1802461277433
-40,37 Porter Field Road,Porter House,,yes,yes,no,first floor only,,http://www.middlebury.edu/media/view/150951/original/Porter.pdf,44.00710955,-73.1743744005459
-41,188 Ridgeline Road,Prescott House,Chromatic,yes,yes,yes,,,http://www.middlebury.edu/media/view/150961/original/prescott.pdf,30.6232796306679,-97.9399652862461
-42,139 Ridgeline Road,Ridgeline Suites,,yes,yes,yes,,,,30.6230981624939,-97.9401621137284
-43,160 HMKL Way,Ross Tower,,yes,no,yes,interior stairs,,http://www.middlebury.edu/system/files/rst_ross_tower_binder.pdf,44.0117134385054,-73.1813278216883
-44,44 Porter Field Road,Self Reliance House,,yes,no,no,,,http://www.middlebury.edu/media/view/422552/original/self_reliance_floor_1.pdf,44.0070040288519,-73.1747009685757
-45,97 Shannon Street,Insite,,yes,no,no,,,http://www.middlebury.edu/system/files/insite.pdf,42.2493734236075,-71.7890126088516
-46,107 Shannon Street,"107 Shannon Street, Apts 1 and 2",,no,no,no,,,http://www.middlebury.edu/media/view/148351/original/ShannonSt107AandB.pdf,44.01216615,-73.1752473956764
-47,108 South Main Street,108 South Main,Chinese House,no,no,no,,,http://www.middlebury.edu/system/files/108_south_main.pdf,38.0803418292424,-120.556045204325
-48,91 Franklin Street,Sperry House,Arabic House,no,no,no,,,http://www.middlebury.edu/media/view/150641/original/FranklinSt91-SperryHse.pdf,44.0102472,-73.1729143080703
-49,11 Old Chapel Road,Starr Hall,,no,no,no,,,http://www.middlebury.edu/media/view/490582/original/sth_starr_binder.pdf,30.7459378920933,-95.3970618061559
-50,167 Hepburn Road,Stewart Hall,,yes,yes,no,accessible restroom is only in Commons Office,,http://www.middlebury.edu/media/view/490693/original/stw_stewart_binder.pdf,41.3482350294332,-72.8982585903458
-51,90 Adirondack View,Ridgeline Town Houses (North),,yes,yes/no,no,"only first floor accessible, accessible restroom in Unit 1 only",,http://www.middlebury.edu/system/files/media/Townhouse%20North_0.pdf,43.9803698712698,-73.3182034626479
-52,106 Adirondack View,Ridgeline Town Houses (Center),,yes,yes/no,no,"only first floor accessible, accessible restroom in Unit 1 and Unit 4 only",,http://www.middlebury.edu/system/files/media/Townhouse%20Center.pdf,43.9803656417287,-73.3183500867399
-53,124 Adirondack View,Ridgeline Town Houses (South),,yes,yes/no,no,"only first floor accessible, accessible restroom in Unit 4 only",,http://www.middlebury.edu/system/files/media/Townhouse%20South_0.pdf,43.9803625006128,-73.3185147515319
-54,665 College Street,Turner House,,no,no,no,,,http://www.middlebury.edu/media/view/151011/original/TurnerHse.pdf,41.2015815896537,-75.9932682178029
-55,381 College Street,Voter Hall,,yes,no,yes,,,http://www.middlebury.edu/media/view/490329/original/vtr_voter_binder.pdf,41.2037855,-75.994358375
-56,28 Weybridge Street,Weybridge House,,no,no,no,,,http://www.middlebury.edu/media/view/151031/original/WeybridgeHse-EnvironmentalStudies.pdf,-33.9693657,18.6559743
+,Address,Building Name,AKA,Accessible Entry?,Accessible Restroom?,Public Elevator?,Comment,Floor Plans (String or pdf) http://www.middlebury.edu/student-life/community-living/residential-life/housing-information/flr_plans,latitude,longitude
+0,20 Adirondack View,20 Adirondack View,Japanese House,no,no,no,,http://www.middlebury.edu/media/view/148241/original/AdirondackView20-JapaneseHse.pdf,44.00821869,-73.18129594
+1,33 Adirondack View,33 Adirondack View,Bungalow,no,no,no,,http://www.middlebury.edu/media/view/254706/original/33_Adirondack_View_1st_Floor.pdf,44.00834811,-73.18107017
+2,97 Adirondack View,97 Adirondack View,PALANA,yes,yes,yes,Elevator to main level is from garage entry,http://www.middlebury.edu/media/view/148251/original/AdirondackView97-PALANA.pdf,44.00893833,-73.18108052
+3,99 Adirondack View,99 Adirondack View,,no,no,no,,http://www.middlebury.edu/media/view/148261/original/AdirondackView99.pdf,44.008378,-73.18100066
+4,18 Chateau Road,Allen Hall,,yes,yes,no,ground and first floor only,http://www.middlebury.edu/system/files/media/AllenHall.pdf,44.01073343,-73.1770925
+5,120 Freeman Way,Atwater Commons Hall A,ATA,yes,yes,yes,suites all visitible; single rooms accessible,http://www.middlebury.edu/media/view/490322/original/ata_atwater_a_binder.pdf,44.015858,-73.178996
+6,125 Freeman Way,Atwater Commons Hall B,ATB,yes,yes,yes,suites all visitible; one suite ADA compliant,http://www.middlebury.edu/media/view/490323/original/atb_atwater_b_binder.pdf,44.015858,-73.178996
+7,63 Chateau Road,Battell Hall,,no,no,no,,http://www.middlebury.edu/system/files/battell_27-jul-15_1.pdf,44.01144302,-73.17724484
+8,129 Adirondack View,Bowker House,Xenia,no,no,no,,http://www.middlebury.edu/media/view/150361/original/Bowker-XeniaHse.pdf,44.00923344,-73.18108569
+9,428 Ridgeline Road,Brackett,,yes,yes,yes,no ADA signage,http://www.middlebury.edu/media/view/490324/original/brk_brackett_binder.pdf,44.0083377,-73.18253769
+10,404 Ridgeline Road,Brooker,,yes,yes,yes,,http://www.middlebury.edu/media/view/490325/original/bro_brooker_binder.pdf,44.00840514,-73.18257633
+11,139 Chateau Road,Le Chateau,,yes,yes,yes,first and ground floor. ADA restroom on lower level,http://www.middlebury.edu/media/view/490326/original/cht_chateau_binder.pdf,44.01218088,-73.17745529
+12,207 Freeman Way,Coffrin Hall,,yes,yes,no,accessible restroom on level 4 only,http://www.middlebury.edu/media/view/490692/original/cfncs_coffrin_binder.pdf,44.015858,-73.178996
+13,220 College Street,220 College Street,,no,no,no,,http://www.middlebury.edu/media/view/274217/original/collegest220.pdf,44.0113137,-73.17395814
+14,236 College Street,236 College Street,Portugese House,no,no,no,,http://www.middlebury.edu/media/view/150411/original/CollegeSt236.pdf,44.011413,-73.171819
+15,248 College Street,248 College Street,Beach House,no,no,no,,http://www.middlebury.edu/media/view/150421/original/CollegeSt248.pdf,44.01111095,-73.17462131
+16,637 College Street,637 College Street,Russian House,no,no,no,,http://www.middlebury.edu/media/view/150571/original/CollegeSt637.pdf,44.0098895,-73.1815235
+17,40 College Street,Deanery (Max Kade House),German House,no,yes,lift,exterior access compromised; interior lift to lower level accessible restroom,http://www.middlebury.edu/media/view/150591/original/Deanery-GermanHse.pdf,44.0118536,-73.17061187
+18,496 College Street,Forest Hall,,yes,yes,yes,Forest west is not accessible,http://www.middlebury.edu/system/files/media/FRE%20FRW%20Forest%20img%20binder.pdf,44.01048665,-73.17710035
+19,131 Franklin Street,131 Franklin Street,Hebrew House,no,no,no,,http://www.middlebury.edu/media/view/150651/original/FranklinSt131-ArabicHse.pdf,44.01013105,-73.17367605
+20,51 Franklin Street,51 Franklin,French House,yes,yes,no,needs accessible signage,http://www.middlebury.edu/student-life/community-living/residential-life/housing-information/flr_plans/files/node/530124/edit?destination=mm/688538,44.0103851,-73.17211302
+21,489 College Street,Gifford Hall,,yes,*no,yes,only accessible restroom is in Gifford Annex,http://www.middlebury.edu/media/view/490578/original/gfd_gifford_binder.pdf,44.01023888,-73.17800778
+22,160 HKML Way,Hadley Hall,,yes/no,yes,yes,lounge space accessible; dorm rooms are not,http://www.middlebury.edu/system/files/media/HDY%20Combined.pdf,,
+23,160 HKML Way,Miliken Hall,,yes/no,yes,yes,some dorm rooms are not accessible,http://www.middlebury.edu/system/files/media/MLK%20Combined_0.pdf,,
+24,121 Hepburn Road,Hepburn Hall,,yes,*no,yes,only accessible restroom is on first floor in the north hall,http://www.middlebury.edu/media/view/490579/original/hpb_hepburn_binder.pdf,44.00956332,-73.17935944
+25,70 Hillcrest Road,70 Hillcrest Road,Queer Studies House (QSH),yes,yes,no,first floor only; appliances not accessible,http://www.middlebury.edu/system/files/media/hms_combined.pdf,44.0091744,-73.18051911
+26,717 College Street,Homer Harris House,,no,no,no,,http://www.middlebury.edu/media/view/150691/original/HomerHarrisHouse.pdf,44.00970698,-73.18350428
+27,70 Weybridge Street,Homestead House,,no,no,no,,http://www.middlebury.edu/system/files/media/hms_combined.pdf,,
+28,99 South Main Street,Jewett House,,yes,*no,no,,http://www.middlebury.edu/media/view/150711/original/JewettHse.pdf,44.008845,-73.175044
+29,48 South Street,Kappa Delta Rho,KDR,no,no,no,,http://www.middlebury.edu/media/view/150851/original/KDR.pdf,44.00531418,-73.1702202
+30,160 HKML Way,Kelly Hall & Lang Hall,,yes/no,yes,yes,lounge space accessible; dorm rooms are not,,,
+31,552 College Street,Laforce Hall,,yes,yes,yes,,http://www.middlebury.edu/media/view/490327/original/laf_laforce_binder.pdf,44.010101,-73.181061
+32,90 Hillcrest Road,Longwell House,,no,no,no,,http://www.middlebury.edu/media/view/150871/original/Longwell-ItalianHse.pdf,44.00908667,-73.18025292
+33,46 Porter Field Road,Meeker House,,yes,yes,yes,except 3rd floor,http://www.middlebury.edu/media/view/257569/original/meeker_house_dorm.pdf,44.0065412,-73.17521334
+34,98 South Main Street,The Mill,,no,no,no,,http://www.middlebury.edu/media/view/150881/original/Mill.pdf,44.0104392,-73.17166082
+35,139 South Main Street,Munford House,,yes,yes,yes,except 3rd floor,http://www.middlebury.edu/media/view/257586/original/Munford_House_Dorm.pdf,44.00617765,-73.17563736
+36,5 Old Chapel Road,Painter Hall,,no,no,no,,http://www.middlebury.edu/media/view/490581/original/ptr_painter_binder.pdf,44.00915584,-73.17619242
+37,260 Ridgeline Road,Palmer House,,yes,yes,yes,,http://www.middlebury.edu/media/view/490328/original/plm_palmer_binder.pdf,44.00880978,-73.18280816
+38,536 College Street,Pearsons Hall,,no,no,no,,http://www.middlebury.edu/media/view/490580/original/prs_pearsons_binder.pdf,44.01024474,-73.1797493
+39,122 Hillcrest Road,Perkins House,,yes,yes,no,first floor only,http://www.middlebury.edu/media/view/150941/original/Perkins-SpanishHse.pdf,44.00875639,-73.18024613
+40,37 Porter Field Road,Porter House,,yes,yes,no,first floor only,http://www.middlebury.edu/media/view/150951/original/Porter.pdf,44.00710955,-73.1743744
+41,188 Ridgeline Road,Prescott House,Chromatic,yes,yes,yes,,http://www.middlebury.edu/media/view/150961/original/prescott.pdf,44.00893023,-73.18299904
+42,139 Ridgeline Road,Ridgeline Suites,,yes,yes,yes,,,44.00893233,-73.18315771
+43,160 HMKL Way,Ross Tower,,yes,no,yes,interior stairs,http://www.middlebury.edu/system/files/rst_ross_tower_binder.pdf,44.01171344,-73.18132782
+44,44 Porter Field Road,Self Reliance House,,yes,no,no,,http://www.middlebury.edu/media/view/422552/original/self_reliance_floor_1.pdf,44.00700403,-73.17470097
+45,97 Shannon Street,Insite,,yes,no,no,,http://www.middlebury.edu/system/files/insite.pdf,44.01291377,-73.17534431
+46,107 Shannon Street,107 Shannon Street (Apts 1 and 2),,no,no,no,,http://www.middlebury.edu/media/view/148351/original/ShannonSt107AandB.pdf,44.01216615,-73.1752474
+47,108 South Main Street,108 South Main,Chinese House,no,no,no,,http://www.middlebury.edu/system/files/108_south_main.pdf,44.0097129,-73.17248459
+48,91 Franklin Street,Sperry House,Arabic House,no,no,no,,http://www.middlebury.edu/media/view/150641/original/FranklinSt91-SperryHse.pdf,44.0102472,-73.17291431
+49,11 Old Chapel Road,Starr Hall,,no,no,no,,http://www.middlebury.edu/media/view/490582/original/sth_starr_binder.pdf,44.007475,-73.175083
+50,167 Hepburn Road,Stewart Hall,,yes,yes,no,accessible restroom is only in Commons Office,http://www.middlebury.edu/media/view/490693/original/stw_stewart_binder.pdf,44.00736542,-73.17787095
+51,90 Adirondack View,Ridgeline Town Houses (North),,yes,yes/no,no,only first floor accessible; accessible restroom in Unit 1 only,http://www.middlebury.edu/system/files/media/Townhouse%20North_0.pdf,44.00887084,-73.18130737
+52,106 Adirondack View,Ridgeline Town Houses (Center),,yes,yes/no,no,only first floor accessible; accessible restroom in Unit 1 and Unit 4 only,http://www.middlebury.edu/system/files/media/Townhouse%20Center.pdf,44.0090199,-73.18130998
+53,124 Adirondack View,Ridgeline Town Houses (South),,yes,yes/no,no,only first floor accessible; accessible restroom in Unit 4 only,http://www.middlebury.edu/system/files/media/Townhouse%20South_0.pdf,44.00918759,-73.18131292
+54,665 College Street,Turner House,,no,no,no,,http://www.middlebury.edu/media/view/151011/original/TurnerHse.pdf,44.00963699,-73.1842494
+55,381 College Street,Voter Hall,,yes,no,yes,,http://www.middlebury.edu/media/view/490329/original/vtr_voter_binder.pdf,44.01015168,-73.17895183
+56,28 Weybridge Street,Weybridge House,,no,no,no,,http://www.middlebury.edu/media/view/151031/original/WeybridgeHse-EnvironmentalStudies.pdf,,
