@@ -15,7 +15,7 @@ Express tutorial used to set up server: https://expressjs.com/en/starter/hello-w
 
 # Database
 
-To create a new migration: `npx knex migrat:make migration_name`
+To create a new migration: `npx knex migrate:make migration_name`
 To migrate database: `npx knex migrate:latest --env development`
 To seed database: `npx knex seed:run --env development`
 
