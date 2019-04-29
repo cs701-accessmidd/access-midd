@@ -6,13 +6,21 @@ function readCSV(filename) {
   const data = values.map((row) => {
     const inputName = row[6];
     return {
-      name: inputName.slice(0, inputName.lastIndexOf(' ') - 11),
-      code: inputName.split(' ')[0],
-      coord: [Number(row[8]), Number(row[7])],
+      name:
+      code:
+      latitude:
+      longitude:
+      plan_url:
+      acc_entry:
+      acc_restroom:
+      elevator:
+      comment:
     };
   });
   return data;
 }
 
-const data = readCSV('./buildings_coordinates.csv');
+const data_academic = readCSV('./buildings_academic_coord.csv');
+const data_residential = readCSV('./buildings_residential_coord.csv');
+const data = data_academic.concat(data_residential);
 fs.writeFileSync('buildings.json', JSON.stringify(data));
