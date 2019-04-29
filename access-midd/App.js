@@ -101,6 +101,7 @@ export default class App extends Component<{}> {
             style={{ height: 50, borderColor: 'gray', borderWidth: 1.5 }}
             onChangeText={(text) => { this.handleChange(text); }}
             placeholder="Search Buildings..."
+            clearButtonMode =  'always'
           />
         </View>
       );

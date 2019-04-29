@@ -22,6 +22,7 @@ MapboxGL.setAccessToken('pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNz
 const styles = StyleSheet.create({
   textbox: {
     paddingTop: '10%',
+    borderBottomColor: 'blue'
 
   },
 });
@@ -46,6 +47,14 @@ class Editor extends Component {
   }
 
   addCoord(coordinates) {
+    this.setState({
+      coord: coordinates
+    });
+  }
+  changeCoord(coordinate, place) {
+    const {coord} = this.state
+    coordinates = coord ? (coord):[0, 0];
+    coordinates[place] = coordinate
     this.setState({
       coord: coordinates
     });
@@ -84,6 +93,29 @@ class Editor extends Component {
         onChangeText={(text) => { this.setState({ name: text }); }}
       />
     );
+    const latValue = coord ? coord[0]: '';
+    const longValue = coord ? coord[1]: '';
+    const latInput = (
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        keyboardType='numeric'
+        clearButtonMode =  'always'
+        value={String(latValue)}
+        placeholder="Latitude"
+        onChangeText={(text) => { this.changeCoord(Number(text), 0); }}
+        />
+    );
+    const longInput = (
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        keyboardType='numeric'
+        clearButtonMode =  'always'
+        value={String(longValue)}
+        placeholder="Longtitude"
+        onChangeText={(text) => { this.changeCoord(Number(text), 1); }}
+      />
+    );
+
     const marker = coord
       ? (
         <MapboxGL.PointAnnotation
@@ -133,9 +165,16 @@ class Editor extends Component {
       <View style={{ flex: 1 }}>
         {coordInput}
         <Text>Click to Add or Move Pin (Must be Set)</Text>
+              <Text>Latitude:</Text>
+              {latInput}
+              <Text>Longitude:</Text>
+              {longInput}
         <View style={styles.textbox}>
+          <Text>Name:</Text>
           {nameInput}
+          <Text>Code:</Text>
           {codeInput}
+          <Text>Other:</Text>
           {otherInput}
           <View>
             <Button disabled={!(name !== '' && coord)} onPress={this.handleSave} title="Save" />
