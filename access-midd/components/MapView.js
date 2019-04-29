@@ -10,7 +10,7 @@
 
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, Text, Button, Animated,  Picker
+  View, StyleSheet, Text, Button, Animated, Picker
 } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
@@ -46,7 +46,6 @@ class MapView extends Component {
       currentLong: null,
       error: null,
       destBuilding: null,
-      origin: null,
       originBuilding: null,
 
     };
@@ -158,7 +157,8 @@ class MapView extends Component {
   render() {
     const { filteredData, edit, directionsView } = this.props;
     const {
-      showDetail, detailPoint, origin, dest, error, currentLat, currentLong, destBuilding, originBuilding
+      showDetail, detailPoint, origin, dest, error, currentLat,
+      currentLong, destBuilding, originBuilding
     } = this.state;
     let directions = null;
     let pinData = filteredData;
