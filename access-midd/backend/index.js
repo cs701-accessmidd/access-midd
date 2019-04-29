@@ -59,7 +59,7 @@ app.post('/building/:id', (req, res) => {
     comment: req.body.other || '',
   };
   if (req.body.plan_url) {
-    updateObj[plan_url] = req.body.plan_url;
+    updateObj.plan_url = req.body.plan_url;
   }
   knex('buildings')
     .where('id', '=', req.params.id)
