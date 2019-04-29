@@ -36,14 +36,7 @@ export default class App extends Component<{}> {
     fetch('http://localhost:3000/buildings', {
       method: 'GET',
     }).then(response => response.json()).then((data) => {
-      const buildings = data.map(obj => ({
-        id: obj.id,
-        name: obj.name,
-        code: obj.code,
-        plan_url: obj.plan_url,
-        coord: [obj.longitude, obj.latitude],
-      }));
-      this.setState({ buildings, filteredData: buildings });
+      this.setState({ buildings: data, filteredData: data });
     }).catch(() => {
       this.setState({ errorMessage: 'Network error: Unable to fetch buildings' });
     });
