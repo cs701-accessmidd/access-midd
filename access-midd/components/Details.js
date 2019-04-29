@@ -10,7 +10,7 @@
 
 import React from 'react';
 import {
-  View, StyleSheet, Text, Button
+  View, StyleSheet, Text, Button, WebView
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -40,6 +40,10 @@ function Details(props) {
       <Text style={styles.buildingCode}>{building.code}</Text>
       <Text>{building.other}</Text>
       <Text>Detailed info will be here</Text>
+      <WebView
+        source={{ uri: 'http://www.middlebury.edu/media/view/148241/original/AdirondackView20-JapaneseHse.pdf' }}
+        style={{ marginTop: 20 }}
+      />
       <Button
         title="Edit"
         onPress={() => props.edit(building)}
