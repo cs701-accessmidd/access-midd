@@ -6,12 +6,14 @@ Express tutorial used to set up server: https://expressjs.com/en/starter/hello-w
 
 ## API
 
-- GET /buildings
-    return list of all buildings from the buildings table
-- PUT /buildings/new
-    add a new building to the buildings table. Must send an object with at least name, code, latitude, and longitude.
-- POST /buildings/:id
-    update fields of the specified building (specify with id) that are given in the request
+GET /buildings
+- Return a list of all buildings from the buildings table as json objects.
+
+PUT /buildings/new
+- Add a new building to the buildings table. Must provide name, code, latitude, and longitude.
+
+POST /buildings/:id
+- Update the specified building with fields and values provided in the request.
 
 # Database
 
