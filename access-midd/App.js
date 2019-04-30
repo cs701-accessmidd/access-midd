@@ -127,7 +127,6 @@ export default class App extends Component<{}> {
       return (
         <View style={{ flex: 1, paddingTop: '10%' }}>
           <View style={{ flexDirection: 'row' }}>
-            {message}
             {searchBar}
             <Menu
               style={{ justifyContent: 'flex-end', width: '25%' }}
@@ -140,6 +139,7 @@ export default class App extends Component<{}> {
               newBuilding={() => { this.handleChange(''); this.setState({ mode: 'edit', detailPoint: null, menu: !menu }); }}
             />
           </View>
+          {message}
           {view}
         </View>
       );

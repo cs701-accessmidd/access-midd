@@ -10,7 +10,7 @@
 
 import React, { Component } from 'react';
 import {
-  View, StyleSheet, Text, Button, Picker,
+  View, StyleSheet, Text, Button, Animated, Picker
 } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
@@ -19,6 +19,8 @@ import Details, { BuildingShape } from './Details';
 import Directions from './Directions';
 
 MapboxGL.setAccessToken('pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNzMHV6N25hNTlnIn0.7UHYWxI_GveY_mUZxiYAhA');
+
+const panther = require('../data/bluePanther.png');
 
 const styles = StyleSheet.create({
   callout: {
@@ -33,14 +35,53 @@ class MapView extends Component {
   constructor() {
     super();
 
+    this.springValue = new Animated.Value(0.3);
+
     this.state = {
       showDetail: false,
       detailPoint: null,
       dest: null,
-      destBuilding: null,
       origin: null,
+      currentLat: null,
+      currentLong: null,
+      error: null,
+      destBuilding: null,
       originBuilding: null,
+
     };
+  }
+
+  componentDidMount() {
+    this.watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        this.setState({
+          currentLat: position.coords.latitude,
+          currentLong: position.coords.longitude,
+          error: null,
+        });
+      },
+      error => this.setState({ error: error.message }),
+      {
+        enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10
+      },
+    );
+    this.spring();
+  }
+
+
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchId);
+  }
+
+  spring() {
+    this.springValue.setValue(0.3);
+    Animated.spring(
+      this.springValue,
+      {
+        toValue: 1,
+        friction: 2.5
+      }
+    ).start(this.spring.bind(this));
   }
 
   pickerChange(type, index) {
@@ -113,11 +154,11 @@ class MapView extends Component {
     return currentList;
   }
 
-
   render() {
     const { filteredData, edit, directionsView } = this.props;
     const {
-      showDetail, detailPoint, origin, dest, destBuilding, originBuilding
+      showDetail, detailPoint, origin, dest, error, currentLat,
+      currentLong, destBuilding, originBuilding
     } = this.state;
     let directions = null;
     let pinData = filteredData;
@@ -168,6 +209,21 @@ class MapView extends Component {
 
       ) : null;
 
+    const currentLocation = error ? null
+      : (
+        // <Text>{currentLat}</Text>);
+        <MapboxGL.PointAnnotation
+          id="currentLocation"
+          title="Current Location"
+          key="currentLocation"
+          coordinate={[Number(currentLat), Number(currentLong)]}
+        >
+          <Animated.Image
+            style={{ width: 30, height: 30, transform: [{ scale: this.springValue }] }}
+            source={panther}
+          />
+        </MapboxGL.PointAnnotation>
+      );
 
     return (
       <View style={{ flex: 1 }}>
@@ -180,6 +236,7 @@ class MapView extends Component {
           scrollEnabled
         >
           {directions}
+          {currentLocation}
           {pinData.map(point => (
             <MapboxGL.PointAnnotation
               id={point.code}
