@@ -10,7 +10,7 @@
 
 import React from 'react';
 import {
-  View, StyleSheet, Text, Button
+  View, StyleSheet, Text, Button, WebView
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -34,12 +34,28 @@ const styles = StyleSheet.create({
 
 function Details(props) {
   const { building } = props;
+  const entry = building.acc_entry ? 'Yes' : 'No';
+  const restroom = building.acc_restroom ? 'Yes' : 'No';
+  const elevator = building.elevator ? 'Yes' : 'No';
+  const comment = building.comment ? building.comment : 'N/A';
+  const floorplans = building.plan_url
+    ? (
+      <WebView
+        source={{ uri: building.plan_url }}
+        style={{ marginTop: 20 }}
+      />
+    ) : (<Text>*No floorplans Available at this time.</Text>);
+
   return (
     <View style={styles.detail}>
       <Text style={styles.buildingName}>{building.name}</Text>
       <Text style={styles.buildingCode}>{building.code}</Text>
-      <Text>{building.other}</Text>
-      <Text>Detailed info will be here</Text>
+      <Text>Details:</Text>
+      <Text>{`Accessible Entry?:  ${entry}`}</Text>
+      <Text>{`Accessible Restroom?:  ${restroom}`}</Text>
+      <Text>{`Public Elevator?:  ${elevator}`}</Text>
+      <Text>{`Comments:  ${comment}`}</Text>
+      {floorplans}
       <Button
         title="Edit"
         onPress={() => props.edit(building)}
