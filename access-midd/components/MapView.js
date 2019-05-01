@@ -224,6 +224,7 @@ class MapView extends Component {
           />
         </MapboxGL.PointAnnotation>
       );
+      // {currentLocation}
 
     return (
       <View style={{ flex: 1 }}>
@@ -236,7 +237,7 @@ class MapView extends Component {
           scrollEnabled
         >
           {directions}
-          {currentLocation}
+
           {pinData.map(point => (
             <MapboxGL.PointAnnotation
               id={point.code}

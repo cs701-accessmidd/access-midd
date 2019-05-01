@@ -10,7 +10,7 @@ GET /buildings
 - Return a list of all buildings from the buildings table as json objects.
 
 PUT /buildings/new
-- Add a new building to the buildings table. Must provide name, code, latitude, and longitude.
+- Add a new building to the buildings table.
 
 POST /buildings/:id
 - Update the specified building with fields and values provided in the request.

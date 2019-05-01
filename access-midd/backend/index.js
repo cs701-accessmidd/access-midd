@@ -27,7 +27,6 @@ app.put('/buildings/new', (req, res) => {
         res.status(409).send({ error: 'Conflict: building already exists' });
         // conflict error code to indicate attempted duplicate entry
       } else {
-        console.log(req.body)
         const newBuilding = {
           address: req.body.address || '',
           name: req.body.name,
@@ -44,7 +43,7 @@ app.put('/buildings/new', (req, res) => {
         knex('buildings').insert(newBuilding).then(() => {
           res.sendStatus(201); // code for successfully created item
         }).catch((err) => {
-          console.log(err)
+          console.log(err); // eslint-disable-line no-console
           res.sendStatus(500); // try to parse the actual error maybe
         });
       }
@@ -52,7 +51,6 @@ app.put('/buildings/new', (req, res) => {
 });
 
 app.post('/building/:id', (req, res) => {
-  console.log(req.body)
   const updateObj = {
     name: req.body.name,
     code: req.body.code,
@@ -72,7 +70,7 @@ app.post('/building/:id', (req, res) => {
       res.sendStatus(200); // code for success
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err); // eslint-disable-line no-console
       res.sendStatus(500); // try to parse the actual error maybe
     });
 });
