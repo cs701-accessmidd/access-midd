@@ -27,6 +27,7 @@ app.put('/buildings/new', (req, res) => {
         res.status(409).send({ error: 'Conflict: building already exists' });
         // conflict error code to indicate attempted duplicate entry
       } else {
+        console.log(req.body)
         const newBuilding = {
           address: req.body.address || '',
           name: req.body.name,
@@ -36,13 +37,14 @@ app.put('/buildings/new', (req, res) => {
           acc_entry: req.body.acc_entry,
           acc_restroom: req.body.acc_restroom,
           elevator: req.body.elevator,
-          comment: req.body.other || '',
+          comment: req.body.comment || '',
           plan_url: req.body.plan_url || '',
           created_at: Date.now(),
         };
         knex('buildings').insert(newBuilding).then(() => {
           res.sendStatus(201); // code for successfully created item
-        }).catch(() => {
+        }).catch((err) => {
+          console.log(err)
           res.sendStatus(500); // try to parse the actual error maybe
         });
       }
@@ -50,13 +52,14 @@ app.put('/buildings/new', (req, res) => {
 });
 
 app.post('/building/:id', (req, res) => {
+  console.log(req.body)
   const updateObj = {
     name: req.body.name,
     code: req.body.code,
     latitude: req.body.coord[1],
     longitude: req.body.coord[0],
     updated_at: Date.now(),
-    comment: req.body.other || '',
+    comment: req.body.comment || '',
     plan_url: req.body.plan_url || '',
     acc_entry: req.body.acc_entry,
     acc_restroom: req.body.acc_restroom,
@@ -68,7 +71,8 @@ app.post('/building/:id', (req, res) => {
     .then(() => {
       res.sendStatus(200); // code for success
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err)
       res.sendStatus(500); // try to parse the actual error maybe
     });
 });

@@ -21,6 +21,7 @@ POST /buildings/:id
 
 Table: buildings
 Columns:
+- id: increments
 - address: string
 - name: string
 - code: string

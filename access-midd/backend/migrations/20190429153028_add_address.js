@@ -1,7 +1,11 @@
-exports.up = knex => knex.schema.table('buildings', (table) => {
-  table.string('address');
-});
+// exports.up = knex => knex.schema.table('buildings', (table) => {
+//   table.string('address');
+// });
+//
+// exports.down = knex => knex.schema.table('buildings', (table) => {
+//   table.dropColumn('address');
+// });
 
-exports.down = knex => knex.schema.table('buildings', (table) => {
-  table.dropColumn('address');
-});
+exports.up = () => {};
+
+exports.down = () => {};
