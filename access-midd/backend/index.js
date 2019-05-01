@@ -57,10 +57,11 @@ app.post('/building/:id', (req, res) => {
     longitude: req.body.coord[0],
     updated_at: Date.now(),
     comment: req.body.other || '',
+    plan_url: req.body.plan_url || '',
+    acc_entry: req.body.acc_entry,
+    acc_restroom: req.body.acc_restroom,
+    elevator: req.body.elevator,
   };
-  if (req.body.plan_url) {
-    updateObj.plan_url = req.body.plan_url;
-  }
   knex('buildings')
     .where('id', '=', req.params.id)
     .update(updateObj)

@@ -81,9 +81,9 @@ class Editor extends Component {
       code,
       comment,
       plan_url: url,
-      acc_entry: entry ? 1 : 0,
-      acc_restroom: restroom ? 1 : 0,
-      elevator: elevator ? 1 : 0,
+      acc_entry: entry === 'Yes',
+      acc_restroom: restroom === 'Yes',
+      elevator: elevator === 'Yes',
       coord: [Number(coord[0]), Number(coord[1])]
     };
     const { complete } = this.props;
