@@ -72,7 +72,11 @@ export const BuildingShape = PropTypes.shape({
   name: PropTypes.string,
   code: PropTypes.string,
   coord: PropTypes.arrayOf(PropTypes.number),
-  other: PropTypes.string,
+  acc_entry: PropTypes.number,
+  acc_restroom: PropTypes.number,
+  elevator: PropTypes.number,
+  comment: PropTypes.string,
+  plan_url: PropTypes.string
 });
 
 
