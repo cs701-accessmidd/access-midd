@@ -45,11 +45,11 @@ class Editor extends Component {
       name: props.building ? props.building.name : '',
       code: props.building ? props.building.code : '',
       coord: props.building ? props.building.coord : null,
-      acc_entry: props.building ? props.building.acc_entry : null,
-      acc_restroom: props.building ? props.building.acc_restroom : null,
+      entry: props.building ? props.building.acc_entry : null,
+      restroom: props.building ? props.building.acc_restroom : null,
       elevator: props.building ? props.building.elevator : null,
       comment: props.building ? props.building.comment : '',
-      plan_url: props.building ? props.building.plan_url : '',
+      url: props.building ? props.building.plan_url : '',
     };
 
     // This binding is necessary to make `this` work in the callback, without
@@ -74,15 +74,15 @@ class Editor extends Component {
 
   handleSave() {
     const {
-      name, code, coord, acc_entry, acc_restroom, comment, plan_url, elevator
+      name, code, coord, entry, restroom, comment, url, elevator
     } = this.state;
     const newBuilding = {
       name,
       code,
       comment,
-      plan_url,
-      acc_entry: acc_entry ? 1 : 0,
-      acc_restroom: acc_restroom ? 1 : 0,
+      plan_url: url,
+      acc_entry: entry ? 1 : 0,
+      acc_restroom: restroom ? 1 : 0,
       elevator: elevator ? 1 : 0,
       coord: [Number(coord[0]), Number(coord[1])]
     };
@@ -99,7 +99,7 @@ class Editor extends Component {
     // We need to create new callbacks here to pass the additional arguments to handleTextUpdate, or
     // we could create simple wrappers like for handleCancel
     const {
-      name, code, coord, acc_entry, acc_restroom, elevator, comment, plan_url
+      name, code, coord, entry, restroom, elevator, comment, url
     } = this.state;
     const nameInput = (
       <TextInput
@@ -165,45 +165,42 @@ class Editor extends Component {
         onChangeText={(text) => { this.setState({ code: text }); }}
       />
     );
-    entry = !!acc_entry;
     const entryInput = (
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Text style={styles.switchLabels}>Accessible Entry?:             </Text>
         <Switch
-          onValueChange={(text) => { this.setState({ acc_entry: !acc_entry }); }}
+          onValueChange={() => { this.setState({ entry: !entry }); }}
           value={entry}
         />
         <Text>
           {' '}
-          {acc_entry ? 'Yes' : 'No'}
+          {entry ? 'Yes' : 'No'}
           {' '}
         </Text>
       </View>
     );
 
-    rest = !!acc_restroom;
     const restroomInput = (
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Text style={styles.switchLabels}>Accessible Restroom?:      </Text>
         <Switch
-          onValueChange={(text) => { this.setState({ acc_restroom: !acc_restroom }); }}
-          value={rest}
+          onValueChange={() => { this.setState({ restroom: !restroom }); }}
+          value={restroom}
         />
         <Text>
           {' '}
-          {acc_restroom ? 'Yes' : 'No'}
+          {restroom ? 'Yes' : 'No'}
           {' '}
         </Text>
       </View>
     );
 
-    elev = !!elevator;
     const elevatorInput = (
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Text style={styles.switchLabels}>Public Elevator?:                </Text>
         <Switch
-          onValueChange={(text) => { this.setState({ elevator: !elevator }); }}
-          value={elev}
+          onValueChange={() => { this.setState({ elevator: !elevator }); }}
+          value={elevator}
         />
         <Text>
           {' '}
@@ -224,9 +221,9 @@ class Editor extends Component {
     const urlInput = (
       <TextInput
         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        value={plan_url}
+        value={url}
         placeholder="url"
-        onChangeText={(text) => { this.setState({ plan_url: text }); }}
+        onChangeText={(text) => { this.setState({ url: text }); }}
       />
     );
 
