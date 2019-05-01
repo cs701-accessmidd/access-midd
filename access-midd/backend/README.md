@@ -39,6 +39,7 @@ Columns:
 
 To create a new migration: `npx knex migrate:make migration_name`
 To migrate database: `npx knex migrate:latest`
+To roll back migrations: `npx knex migrate:rollback`
 To seed database: `npx knex seed:run`
 
 Sources for knex and database setup:
