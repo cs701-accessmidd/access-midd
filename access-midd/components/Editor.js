@@ -11,7 +11,7 @@
 
 import React, { Component } from 'react';
 import {
-  View, Button, TextInput, StyleSheet, Text
+  View, Button, TextInput, StyleSheet, Text, Switch
 } from 'react-native';
 import PropTypes from 'prop-types';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
@@ -24,6 +24,16 @@ const styles = StyleSheet.create({
     paddingTop: '10%',
 
   },
+  switchLabels: {
+    fontSize: 14,
+    color: 'gray',
+    fontWeight: 'bold',
+  },
+  labels: {
+    fontSize: 12,
+    color: 'gray',
+    fontWeight: 'bold',
+  },
 });
 
 
@@ -35,7 +45,11 @@ class Editor extends Component {
       name: props.building ? props.building.name : '',
       code: props.building ? props.building.code : '',
       coord: props.building ? props.building.coord : null,
-      other: props.building ? props.building.other : '',
+      entry: props.building ? props.building.acc_entry : null,
+      restroom: props.building ? props.building.acc_restroom : null,
+      elevator: props.building ? props.building.elevator : null,
+      comment: props.building ? props.building.comment : '',
+      url: props.building ? props.building.plan_url : '',
     };
 
     // This binding is necessary to make `this` work in the callback, without
@@ -51,15 +65,26 @@ class Editor extends Component {
     });
   }
 
+  changeCoord(coordinate, place) {
+    const { coord } = this.state;
+    const coordinates = coord || ['', ''];
+    coordinates[place] = coordinate;
+    this.setState({ coord: coordinates });
+  }
+
   handleSave() {
     const {
-      name, code, coord, other
+      name, code, coord, entry, restroom, comment, url, elevator
     } = this.state;
     const newBuilding = {
       name,
       code,
-      coord,
-      other,
+      comment,
+      plan_url: url,
+      acc_entry: entry ? 1 : 0,
+      acc_restroom: restroom ? 1 : 0,
+      elevator: elevator ? 1 : 0,
+      coord: [Number(coord[0]), Number(coord[1])]
     };
     const { complete } = this.props;
     complete(newBuilding);
@@ -74,7 +99,7 @@ class Editor extends Component {
     // We need to create new callbacks here to pass the additional arguments to handleTextUpdate, or
     // we could create simple wrappers like for handleCancel
     const {
-      name, code, coord, other
+      name, code, coord, entry, restroom, elevator, comment, url
     } = this.state;
     const nameInput = (
       <TextInput
@@ -90,7 +115,7 @@ class Editor extends Component {
           id={code}
           title={name}
           key={code}
-          coordinate={coord}
+          coordinate={[Number(coord[0]), Number(coord[1])]}
         >
           <MapboxGL.Callout
             title={name}
@@ -110,6 +135,27 @@ class Editor extends Component {
         {marker}
       </MapboxGL.MapView>
     );
+    const lat = coord ? String(coord[0]) : null;
+    const long = coord ? String(coord[1]) : null;
+
+    const latInput = (
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        keyboardType="numeric"
+        value={lat}
+        placeholder="Latitude"
+        onChangeText={(text) => { this.changeCoord(text, 0); }}
+      />
+    );
+    const longInput = (
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        keyboardType="numeric"
+        value={long}
+        placeholder="Longitude"
+        onChangeText={(text) => { this.changeCoord(text, 1); }}
+      />
+    );
 
     const codeInput = (
       <TextInput
@@ -119,13 +165,65 @@ class Editor extends Component {
         onChangeText={(text) => { this.setState({ code: text }); }}
       />
     );
+    const entryInput = (
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={styles.switchLabels}>Accessible Entry?:             </Text>
+        <Switch
+          onValueChange={() => { this.setState({ entry: !entry }); }}
+          value={!!entry}
+        />
+        <Text>
+          {' '}
+          {entry ? 'Yes' : 'No'}
+          {' '}
+        </Text>
+      </View>
+    );
 
-    const otherInput = (
+    const restroomInput = (
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={styles.switchLabels}>Accessible Restroom?:      </Text>
+        <Switch
+          onValueChange={() => { this.setState({ restroom: !restroom }); }}
+          value={!!restroom}
+        />
+        <Text>
+          {' '}
+          {restroom ? 'Yes' : 'No'}
+          {' '}
+        </Text>
+      </View>
+    );
+
+    const elevatorInput = (
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={styles.switchLabels}>Public Elevator?:                </Text>
+        <Switch
+          onValueChange={() => { this.setState({ elevator: !elevator }); }}
+          value={!!elevator}
+        />
+        <Text>
+          {' '}
+          {elevator ? 'Yes' : 'No'}
+          {' '}
+        </Text>
+      </View>
+    );
+
+    const commentInput = (
       <TextInput
         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        value={other}
-        placeholder="Other"
-        onChangeText={(text) => { this.setState({ other: text }); }}
+        value={comment}
+        placeholder="Comment"
+        onChangeText={(text) => { this.setState({ comment: text }); }}
+      />
+    );
+    const urlInput = (
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        value={url}
+        placeholder="url"
+        onChangeText={(text) => { this.setState({ url: text }); }}
       />
     );
 
@@ -133,10 +231,22 @@ class Editor extends Component {
       <View style={{ flex: 1 }}>
         {coordInput}
         <Text>Click to Add or Move Pin (Must be Set)</Text>
+        <Text style={styles.labels}>Latitude:</Text>
+        {latInput}
+        <Text style={styles.labels}>Longitude:</Text>
+        {longInput}
         <View style={styles.textbox}>
+          <Text style={styles.labels}>Name:</Text>
           {nameInput}
+          <Text style={styles.labels}>Code:</Text>
           {codeInput}
-          {otherInput}
+          {entryInput}
+          {restroomInput}
+          {elevatorInput}
+          <Text style={styles.labels}>Comment:</Text>
+          {commentInput}
+          <Text style={styles.labels}>Floor Plan URL:</Text>
+          {urlInput}
           <View>
             <Button disabled={!(name !== '' && coord)} onPress={this.handleSave} title="Save" />
             <Button onPress={this.handleCancel} title="Cancel" />

@@ -36,13 +36,14 @@ app.put('/buildings/new', (req, res) => {
           acc_entry: req.body.acc_entry,
           acc_restroom: req.body.acc_restroom,
           elevator: req.body.elevator,
-          comment: req.body.other || '',
+          comment: req.body.comment || '',
           plan_url: req.body.plan_url || '',
           created_at: Date.now(),
         };
         knex('buildings').insert(newBuilding).then(() => {
           res.sendStatus(201); // code for successfully created item
-        }).catch(() => {
+        }).catch((err) => {
+          console.log(err); // eslint-disable-line no-console
           res.sendStatus(500); // try to parse the actual error maybe
         });
       }
@@ -56,18 +57,20 @@ app.post('/building/:id', (req, res) => {
     latitude: req.body.coord[1],
     longitude: req.body.coord[0],
     updated_at: Date.now(),
-    comment: req.body.other || '',
+    comment: req.body.comment || '',
+    plan_url: req.body.plan_url || '',
+    acc_entry: req.body.acc_entry,
+    acc_restroom: req.body.acc_restroom,
+    elevator: req.body.elevator,
   };
-  if (req.body.plan_url) {
-    updateObj.plan_url = req.body.plan_url;
-  }
   knex('buildings')
     .where('id', '=', req.params.id)
     .update(updateObj)
     .then(() => {
       res.sendStatus(200); // code for success
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err); // eslint-disable-line no-console
       res.sendStatus(500); // try to parse the actual error maybe
     });
 });
