@@ -36,7 +36,7 @@ app.put('/buildings/new', (req, res) => {
           acc_entry: req.body.acc_entry,
           acc_restroom: req.body.acc_restroom,
           elevator: req.body.elevator,
-          comment: req.body.other || '',
+          comment: req.body.comment || '',
           plan_url: req.body.plan_url || '',
           created_at: Date.now(),
         };
@@ -56,7 +56,10 @@ app.post('/building/:id', (req, res) => {
     latitude: req.body.coord[1],
     longitude: req.body.coord[0],
     updated_at: Date.now(),
-    comment: req.body.other || '',
+    acc_entry: req.body.acc_entry,
+    acc_restroom: req.body.acc_restroom,
+    elevator: req.body.elevator,
+    comment: req.body.comment || '',
   };
   if (req.body.plan_url) {
     updateObj.plan_url = req.body.plan_url;

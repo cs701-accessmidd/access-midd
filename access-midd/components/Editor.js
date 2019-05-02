@@ -170,7 +170,7 @@ class Editor extends Component {
         <Text style={styles.switchLabels}>Accessible Entry?:             </Text>
         <Switch
           onValueChange={() => { this.setState({ entry: !entry }); }}
-          value={entry}
+          value={!!entry}
         />
         <Text>
           {' '}
@@ -185,7 +185,7 @@ class Editor extends Component {
         <Text style={styles.switchLabels}>Accessible Restroom?:      </Text>
         <Switch
           onValueChange={() => { this.setState({ restroom: !restroom }); }}
-          value={restroom}
+          value={!!restroom}
         />
         <Text>
           {' '}
@@ -200,7 +200,7 @@ class Editor extends Component {
         <Text style={styles.switchLabels}>Public Elevator?:                </Text>
         <Switch
           onValueChange={() => { this.setState({ elevator: !elevator }); }}
-          value={elevator}
+          value={!!elevator}
         />
         <Text>
           {' '}
