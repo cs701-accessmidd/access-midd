@@ -10,7 +10,7 @@ GET /buildings
 - Return a list of all buildings from the buildings table as json objects.
 
 PUT /buildings/new
-- Add a new building to the buildings table. Must provide name, code, latitude, and longitude.
+- Add a new building to the buildings table.
 
 POST /buildings/:id
 - Update the specified building with fields and values provided in the request.
@@ -21,6 +21,7 @@ POST /buildings/:id
 
 Table: buildings
 Columns:
+- id: increments
 - address: string
 - name: string
 - code: string
@@ -38,6 +39,7 @@ Columns:
 
 To create a new migration: `npx knex migrate:make migration_name`
 To migrate database: `npx knex migrate:latest`
+To roll back migrations: `npx knex migrate:rollback`
 To seed database: `npx knex seed:run`
 
 Sources for knex and database setup:
