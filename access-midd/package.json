@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "npm run server:start & npm run ios:start",
+    "start": "npm run ios:start",
     "server:start": "node backend/index.js",
     "ios:start": "react-native run-ios",
     "test": "jest",

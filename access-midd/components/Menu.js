@@ -1,6 +1,7 @@
 /*
   Menu displays the name, and other info of a building passed
   down in its props.
+
   props:
     currentView: Current View; either 'map' or 'list'
     directionsView: A callback to display directions View
@@ -15,56 +16,29 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-
 function Menu(props) {
   const { currentView, direction, menu } = props;
+
   let buttons = null;
-  if (currentView === 'list') {
-    buttons = (
-      <View>
-        <Button
-          title="Directions"
-          onPress={() => props.directionsView()}
-        />
-        <Button
-          title="List View"
-          onPress={() => props.changeViewType()}
-        />
-      </View>
-    );
-  } else {
-    buttons = (
-      <Button
-        title="Map View"
-        onPress={() => props.changeViewType()}
-      />
-    );
-  }
-  const menuButton = direction ? (
-    <Button
-      title="< Back"
-      onPress={() => props.directionsView()}
-    />
-  ) : (
-    <Button
-      title="Menu"
-      onPress={() => props.showMenu()}
-    />
-  );
+  buttons = currentView === 'list'
+    ? (<View>
+        <Button title="Directions" onPress={() => props.directionsView()}/>
+        <Button title="List View" onPress={() => props.changeViewType()}/>
+      </View>)
+    : (<Button title="Map View" onPress={() => props.changeViewType()}/>);
+
+  const menuButton = direction
+    ? (<Button title="< Back" onPress={() => props.directionsView()}/>)
+    : (<Button title="Menu" onPress={() => props.showMenu()}/>);
+
   if (menu && !direction) {
     return (
       <View>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Button
-            title="< Exit Menu"
-            onPress={() => props.showMenu()}
-          />
+          <Button title="< Exit Menu" onPress={() => props.showMenu()}/>
         </View>
         {buttons}
-        <Button
-          title="New Building"
-          onPress={() => props.newBuilding()}
-        />
+        <Button title="New Building" onPress={() => props.newBuilding()}/>
       </View>
     );
   }
@@ -74,7 +48,6 @@ function Menu(props) {
     </View>
   );
 }
-
 
 Menu.propTypes = {
   currentView: PropTypes.oneOf([
@@ -86,10 +59,5 @@ Menu.propTypes = {
   newBuilding: PropTypes.func.isRequired,
   direction: PropTypes.bool.isRequired,
 };
-
-Menu.defaultProps = {
-
-};
-
 
 export default Menu;

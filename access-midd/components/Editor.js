@@ -1,6 +1,7 @@
 /*
   Editor implements a form for creating a new buildig or editing an existing
   building.
+
   props:
     building: The building to be edited [optional]
     complete: A callback to add or save building
@@ -22,7 +23,6 @@ MapboxGL.setAccessToken('pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNz
 const styles = StyleSheet.create({
   textbox: {
     paddingTop: '10%',
-
   },
   switchLabels: {
     fontSize: 14,
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
 
 class Editor extends Component {
   constructor(props) {
@@ -52,11 +51,13 @@ class Editor extends Component {
       url: props.building ? props.building.plan_url : '',
     };
 
-    // This binding is necessary to make `this` work in the callback, without
-    // creating a new callback in each render
-    // https://reactjs.org/docs/handling-events.html
+    this.addCoord = this.addCoord.bind(this);
+    this.changeCoord = this.changeCoord.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.buildBooleanInput = this.buildBooleanInput.bind(this);
+    this.buildTextInput = this.buildTextInput.bind(this);
+    this.buildNumericInput = this.buildNumericInput.bind(this);
   }
 
   addCoord(coordinates) {
@@ -95,20 +96,51 @@ class Editor extends Component {
     complete();
   }
 
+  buildBooleanInput(text, stateValue, update) {
+    return (
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={styles.switchLabels}>{text}</Text>
+        <Switch
+          onValueChange={update}
+          value={!!stateValue}
+        />
+        <Text>
+          {' '}
+          {stateValue ? 'Yes' : 'No'}
+          {' '}
+        </Text>
+      </View>
+    );
+  }
+
+  buildTextInput(stateValue, placeholder, update) {
+    return (
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        value={stateValue}
+        placeholder={placeholder}
+        onChangeText={update}
+      />
+    );
+  }
+
+  buildNumericInput(stateValue, placeholder, update) {
+    return (
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        keyboardType="numeric"
+        value={stateValue}
+        placeholder={placeholder}
+        onChangeText={update}
+      />
+    );
+  }
+
   render() {
-    // We need to create new callbacks here to pass the additional arguments to handleTextUpdate, or
-    // we could create simple wrappers like for handleCancel
     const {
       name, code, coord, entry, restroom, elevator, comment, url
     } = this.state;
-    const nameInput = (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        value={name}
-        placeholder="Name must be set"
-        onChangeText={(text) => { this.setState({ name: text }); }}
-      />
-    );
+
     const marker = coord
       ? (
         <MapboxGL.PointAnnotation
@@ -117,9 +149,7 @@ class Editor extends Component {
           key={code}
           coordinate={[Number(coord[0]), Number(coord[1])]}
         >
-          <MapboxGL.Callout
-            title={name}
-          />
+          <MapboxGL.Callout title={name}/>
         </MapboxGL.PointAnnotation>
       ) : null;
 
@@ -138,115 +168,34 @@ class Editor extends Component {
     const lat = coord ? String(coord[0]) : null;
     const long = coord ? String(coord[1]) : null;
 
-    const latInput = (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        keyboardType="numeric"
-        value={lat}
-        placeholder="Latitude"
-        onChangeText={(text) => { this.changeCoord(text, 0); }}
-      />
-    );
-    const longInput = (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        keyboardType="numeric"
-        value={long}
-        placeholder="Longitude"
-        onChangeText={(text) => { this.changeCoord(text, 1); }}
-      />
-    );
-
-    const codeInput = (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        value={code}
-        placeholder="Code"
-        onChangeText={(text) => { this.setState({ code: text }); }}
-      />
-    );
-    const entryInput = (
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Text style={styles.switchLabels}>Accessible Entry?:             </Text>
-        <Switch
-          onValueChange={() => { this.setState({ entry: !entry }); }}
-          value={!!entry}
-        />
-        <Text>
-          {' '}
-          {entry ? 'Yes' : 'No'}
-          {' '}
-        </Text>
-      </View>
-    );
-
-    const restroomInput = (
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Text style={styles.switchLabels}>Accessible Restroom?:      </Text>
-        <Switch
-          onValueChange={() => { this.setState({ restroom: !restroom }); }}
-          value={!!restroom}
-        />
-        <Text>
-          {' '}
-          {restroom ? 'Yes' : 'No'}
-          {' '}
-        </Text>
-      </View>
-    );
-
-    const elevatorInput = (
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Text style={styles.switchLabels}>Public Elevator?:                </Text>
-        <Switch
-          onValueChange={() => { this.setState({ elevator: !elevator }); }}
-          value={!!elevator}
-        />
-        <Text>
-          {' '}
-          {elevator ? 'Yes' : 'No'}
-          {' '}
-        </Text>
-      </View>
-    );
-
-    const commentInput = (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        value={comment}
-        placeholder="Comment"
-        onChangeText={(text) => { this.setState({ comment: text }); }}
-      />
-    );
-    const urlInput = (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        value={url}
-        placeholder="url"
-        onChangeText={(text) => { this.setState({ url: text }); }}
-      />
-    );
-
     return (
       <View style={{ flex: 1 }}>
         {coordInput}
         <Text>Click to Add or Move Pin (Must be Set)</Text>
         <Text style={styles.labels}>Latitude:</Text>
-        {latInput}
+        {this.buildNumericInput(lat, "Latitude", (text) => { this.changeCoord(text, 0); })}
         <Text style={styles.labels}>Longitude:</Text>
-        {longInput}
+        {this.buildNumericInput(long, "Longitude", (text) => { this.changeCoord(text, 1); })}
         <View style={styles.textbox}>
           <Text style={styles.labels}>Name:</Text>
-          {nameInput}
+          {this.buildTextInput(name, "Name must be set", (text) => {
+            this.setState({ name: text });
+          })}
           <Text style={styles.labels}>Code:</Text>
-          {codeInput}
-          {entryInput}
-          {restroomInput}
-          {elevatorInput}
+          {this.buildTextInput(code, "Code", (text) => { this.setState({ code: text }); })}
+          {this.buildBooleanInput("Accessible Entry?:", entry, () => {
+            this.setState({ entry: !entry });
+          })}
+          {this.buildBooleanInput("Accessible Restroom?:", restroom, () => {
+            this.setState({ restroom: !restroom });
+          })}
+          {this.buildBooleanInput("Public Elevator?:", elevator, () => {
+            this.setState({ elevator: !elevator });
+          })}
           <Text style={styles.labels}>Comment:</Text>
-          {commentInput}
+          {this.buildTextInput(comment, "Comment", (text) => { this.setState({ comment: text }); })}
           <Text style={styles.labels}>Floor Plan URL:</Text>
-          {urlInput}
+          {this.buildTextInput(url, "url", (text) => { this.setState({ url: text }); })}
           <View>
             <Button disabled={!(name !== '' && coord)} onPress={this.handleSave} title="Save" />
             <Button onPress={this.handleCancel} title="Cancel" />

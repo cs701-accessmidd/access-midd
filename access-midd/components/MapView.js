@@ -1,5 +1,5 @@
 /*
-  Mapview displays buildings on Map
+  Mapview displays buildings on the map
 
   props:
     directionsView: type of view (true or false)
@@ -68,7 +68,6 @@ class MapView extends Component {
     this.spring();
   }
 
-
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchId);
   }
@@ -86,7 +85,7 @@ class MapView extends Component {
 
   pickerChange(type, index) {
     const { filteredData } = this.props;
-    filteredData.map((v, i) => {
+    filteredData.forEach((v, i) => {
       if (index === i) {
         if (type === 'dest') {
           this.setState({
@@ -100,57 +99,40 @@ class MapView extends Component {
           });
         }
       }
-      return null;
     });
   }
 
-
   filterPoints() {
-    // Variable to hold the original version of the list
     const { destBuilding, originBuilding } = this.state;
     const { filteredData } = this.props;
     const currentList = filteredData;
-    // Variable to hold the filtered list before putting into state
+
     let filtered = {};
     let filtered2 = {};
     let term;
 
-    // If the search bar isn't empty
     if (destBuilding) {
       term = destBuilding.toLowerCase();
       filtered = currentList.filter((item) => {
-        // change current item to lowercase
         const lc = item.name.toLowerCase();
-        // check to see if the current list item includes the search term
-        // If it does, it will be added to newList. Using lowercase eliminates
-        // issues with capitalization in search terms and search content
         return lc.includes(term);
       });
     }
     if (originBuilding) {
-      // If the search bar is empty, set newList to original task list
       term = originBuilding.toLowerCase();
       filtered2 = currentList.filter((item) => {
-        // change current item to lowercase
         const lc = item.name.toLowerCase();
-        // check to see if the current list item includes the search term
-        // If it does, it will be added to newList. Using lowercase eliminates
-        // issues with capitalization in search terms and search content
         return lc.includes(term);
       });
     }
     if (destBuilding && originBuilding) {
-      if (destBuilding === originBuilding) {
-        return filtered;
-      }
+      if (destBuilding === originBuilding) return filtered;
       const two = filtered2.pop();
       filtered.push(two);
       return filtered;
-    } if (!originBuilding && destBuilding) {
-      return filtered;
-    } if (!destBuilding && originBuilding) {
-      return filtered2;
     }
+    if (!originBuilding && destBuilding) return filtered;
+    if (!destBuilding && originBuilding) return filtered2;
     return currentList;
   }
 
@@ -160,6 +142,7 @@ class MapView extends Component {
       showDetail, detailPoint, origin, dest, error, currentLat,
       currentLong, destBuilding, originBuilding
     } = this.state;
+
     let directions = null;
     let pinData = filteredData;
     let directionPicker = null;
@@ -172,9 +155,7 @@ class MapView extends Component {
             selectedValue={originBuilding}
             onValueChange={(itemValue, itemIndex) => this.pickerChange('origin', itemIndex)}
           >
-            {
-            filteredData.map(v => <Picker.Item label={v.name} key={v.code} value={v.name} />)
-           }
+            {filteredData.map(v => <Picker.Item label={v.name} key={v.code} value={v.name} />)}
           </Picker>
           <Text>To:</Text>
           <Picker
@@ -182,14 +163,11 @@ class MapView extends Component {
             selectedValue={destBuilding}
             onValueChange={(itemValue, itemIndex) => this.pickerChange('dest', itemIndex)}
           >
-            {
-            filteredData.map(v => <Picker.Item label={v.name} key={v.code} value={v.name} />)
-           }
+            {filteredData.map(v => <Picker.Item label={v.name} key={v.code} value={v.name} />)}
           </Picker>
         </View>
       );
-      const newData = this.filterPoints();
-      pinData = newData;
+      pinData = this.filterPoints();
       directions = (
         <Directions
           accessToken="pk.eyJ1IjoiY3N0ZXJuYmVyZyIsImEiOiJjanQ1M3FranEwMmU0NDNzMHV6N25hNTlnIn0.7UHYWxI_GveY_mUZxiYAhA"
@@ -206,12 +184,10 @@ class MapView extends Component {
           building={detailPoint}
           edit={(building) => { edit(building); }}
         />
-
       ) : null;
 
     const currentLocation = error ? null
       : (
-        // <Text>{currentLat}</Text>);
         <MapboxGL.PointAnnotation
           id="currentLocation"
           title="Current Location"
@@ -236,7 +212,7 @@ class MapView extends Component {
           scrollEnabled
         >
           {directions}
-          {currentLocation}
+          {/*currentLocation*/ null}
           {pinData.map(point => (
             <MapboxGL.PointAnnotation
               id={point.code}
@@ -269,6 +245,5 @@ MapView.propTypes = {
   filteredData: PropTypes.arrayOf(BuildingShape).isRequired,
   edit: PropTypes.func.isRequired,
 };
-
 
 export default MapView;

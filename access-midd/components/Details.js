@@ -1,6 +1,7 @@
 /*
-  Details displays the name, and other info of a building passed
+  Details displays the name and other info of a building passed
   down in its props.
+
   props:
     view: A callback to display details
     building: Building to display
@@ -32,19 +33,17 @@ const styles = StyleSheet.create({
   },
 });
 
+const boolToEnglish = bool => bool ? 'Yes' : 'No';
+
 function Details(props) {
   const { building } = props;
-  const entry = building.acc_entry ? 'Yes' : 'No';
-  const restroom = building.acc_restroom ? 'Yes' : 'No';
-  const elevator = building.elevator ? 'Yes' : 'No';
+  const entry = boolToEnglish(building.acc_entry);
+  const restroom = boolToEnglish(building.acc_restroom);
+  const elevator = boolToEnglish(building.elevator);
   const comment = building.comment ? building.comment : 'N/A';
   const floorplans = building.plan_url
-    ? (
-      <WebView
-        source={{ uri: building.plan_url }}
-        style={{ marginTop: 20 }}
-      />
-    ) : (<Text>*No floorplans Available at this time.</Text>);
+    ? (<WebView source={{ uri: building.plan_url }} style={{ marginTop: 20 }}/>)
+    : (<Text>*No floorplans Available at this time.</Text>);
 
   return (
     <View style={styles.detail}>
@@ -56,18 +55,13 @@ function Details(props) {
       <Text>{`Public Elevator?:  ${elevator}`}</Text>
       <Text>{`Comments:  ${comment}`}</Text>
       {floorplans}
-      <Button
-        title="Edit"
-        onPress={() => props.edit(building)}
-      />
-      <Button
-        title="close"
-        onPress={() => props.view(false)}
-      />
+      <Button title="Edit" onPress={() => props.edit(building)}/>
+      <Button title="close" onPress={() => props.view(false)}/>
     </View>
   );
 }
-// Article PropType used repeatedly in application, export to DRY it up
+
+// BuildingShape PropType used repeatedly in application, export to DRY it up
 export const BuildingShape = PropTypes.shape({
   name: PropTypes.string,
   code: PropTypes.string,
@@ -79,12 +73,10 @@ export const BuildingShape = PropTypes.shape({
   plan_url: PropTypes.string
 });
 
-
 Details.propTypes = {
   building: BuildingShape.isRequired,
   view: PropTypes.func.isRequired,
   edit: PropTypes.func.isRequired,
 };
-
 
 export default Details;

@@ -1,12 +1,11 @@
 /*
+  BuildingContainer displays the title of the building and details of
+  building if clicked
 
-BuildingContainer displays the title of the building and details of
-building if clicked
-
-props:
-  building: building info
-  edit: A callback to change View type of main app (editor view),
-        and change detail point state to  current building
+  props:
+    building: building info
+    edit: A callback to change View type of main app (editor view),
+          and change detail point state to current building
 */
 
 import React, { Component } from 'react';
@@ -14,10 +13,7 @@ import {
   View, Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
-
-
 import Details, { BuildingShape } from './Details';
-
 
 class BuildingContainer extends Component {
   constructor(props) {
@@ -28,10 +24,7 @@ class BuildingContainer extends Component {
     };
   }
 
-
   render() {
-    // We need to create new callbacks here to pass the additional arguments to handleTextUpdate, or
-    // we could create simple wrappers like for handleCancel
     const { detail } = this.state;
     const { building, edit } = this.props;
     const detailView = detail
@@ -43,9 +36,7 @@ class BuildingContainer extends Component {
           viewType="list"
         />
       ) : (
-        <Text
-          onPress={() => this.setState({ detail: !detail })}
-        >
+        <Text onPress={() => this.setState({ detail: !detail })}>
           {building.name}
         </Text>
       );
