@@ -3,9 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native run-ios",
+    "start": "npm run server:start & npm run ios:start",
+    "server:start": "node backend/index.js",
+    "ios:start": "react-native run-ios",
     "test": "jest",
-    "lint": "./node_modules/.bin/eslint \"**/*.js\""
+    "lint": "./node_modules/.bin/eslint \"**/*.js\"",
+    "db:migrate": "npx knex migrate:latest",
+    "db:rollback": "npx knex migrate:rollback",
+    "db:seed": "npx knex seed:run",
+    "db:setup": "db:migrate && db:seed"
   },
   "dependencies": {
     "@mapbox/react-native-mapbox-gl": "^6.1.3",
