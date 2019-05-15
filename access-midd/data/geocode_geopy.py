@@ -1,5 +1,4 @@
 # Source: https://github.com/geopy/geopy
-# used geocode.py for help with pandas
 
 from geopy.geocoders import Nominatim
 import pandas as pd

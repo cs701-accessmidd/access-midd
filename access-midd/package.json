@@ -8,9 +8,9 @@
     "ios:start": "react-native run-ios",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint \"**/*.js\"",
-    "db:migrate": "npx knex migrate:latest",
-    "db:rollback": "npx knex migrate:rollback",
-    "db:seed": "npx knex seed:run",
+    "db:migrate": "pushd backend && npx knex migrate:latest && popd",
+    "db:rollback": "pushd backend && npx knex migrate:rollback && popd",
+    "db:seed": "pushd backend && npx knex seed:run && popd",
     "db:setup": "db:migrate && db:seed"
   },
   "dependencies": {
