@@ -1,6 +1,6 @@
-# Server info
+# Server
 
-To start the server: `node index.js` or `node .` from backend directory
+To start the server: `node index.js` or `node .` from backend directory, or `npm run server:start`
 
 Express tutorial used to set up server: https://expressjs.com/en/starter/hello-world.html
 
@@ -10,7 +10,7 @@ GET /buildings
 - Return a list of all buildings from the buildings table as json objects.
 
 PUT /buildings/new
-- Add a new building to the buildings table.
+- Add a new building to the buildings table if a building with the same name does not already exist.
 
 POST /buildings/:id
 - Update the specified building with fields and values provided in the request.
@@ -42,6 +42,8 @@ To migrate database: `npx knex migrate:latest`
 To roll back migrations: `npx knex migrate:rollback`
 To seed database: `npx knex seed:run`
 
+Note: do not delete migration files
+
 Sources for knex and database setup:
-- http://www.cs.middlebury.edu/~mlinderman/courses/cs312/s18/lectures/practical-rdbms.html
+- http://www.cs.middlebury.edu/~mlinderman/courses/cs312/s18/lectures/practical-rdbms.html (In-class lab instructions from CS321 by Michael Linderman at Middlebury College, Middlebury VT)
 - https://knexjs.org/
