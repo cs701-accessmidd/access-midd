@@ -1,6 +1,6 @@
 # Server
 
-To start the server: `node index.js` or `node .` from backend directory, or `npm run server:start`
+To start the server: `node index.js` or `node .` from backend directory
 
 Express tutorial used to set up server: https://expressjs.com/en/starter/hello-world.html
 
