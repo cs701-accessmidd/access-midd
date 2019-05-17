@@ -72,6 +72,18 @@ app.post('/buildings/:id', (req, res) => {
     });
 });
 
+app.delete('/buildings/:id', (req, res) => {
+  knex('buildings')
+    .where('id', '=', req.params.id)
+    .del()
+    .then(() => {
+      res.sendStatus(200); // code for success
+    }).catch((err) => {
+      console.log(err); // eslint-disable-line no-console
+      res.sendStatus(500);
+    });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`); // eslint-disable-line no-console
 });

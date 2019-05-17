@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npm run ios:start",
+    "server:start": "pushd backend && node . && popd",
     "ios:start": "react-native run-ios",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint \"**/*.js\"",

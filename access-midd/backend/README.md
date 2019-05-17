@@ -15,6 +15,9 @@ PUT /buildings/new
 POST /buildings/:id
 - Update the specified building with fields and values provided in the request.
 
+DELETE /buildings/:id
+- Delete the specified building from the table.
+
 # Database
 
 ## Schema
