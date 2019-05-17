@@ -36,6 +36,46 @@ const styles = StyleSheet.create({
   },
 });
 
+function buildBooleanInput(text, stateValue, update) {
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <Text style={styles.switchLabels}>{text}</Text>
+      <Switch
+        onValueChange={update}
+        value={!!stateValue}
+      />
+      <Text>
+        {' '}
+        {stateValue ? 'Yes' : 'No'}
+        {' '}
+      </Text>
+    </View>
+  );
+}
+
+function buildTextInput(stateValue, placeholder, update) {
+  return (
+    <TextInput
+      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+      value={stateValue}
+      placeholder={placeholder}
+      onChangeText={update}
+    />
+  );
+}
+
+function buildNumericInput(stateValue, placeholder, update) {
+  return (
+    <TextInput
+      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+      keyboardType="numeric"
+      value={stateValue}
+      placeholder={placeholder}
+      onChangeText={update}
+    />
+  );
+}
+
 class Editor extends Component {
   constructor(props) {
     super(props);
@@ -55,9 +95,6 @@ class Editor extends Component {
     this.changeCoord = this.changeCoord.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
-    this.buildBooleanInput = this.buildBooleanInput.bind(this);
-    this.buildTextInput = this.buildTextInput.bind(this);
-    this.buildNumericInput = this.buildNumericInput.bind(this);
   }
 
   addCoord(coordinates) {
@@ -96,46 +133,6 @@ class Editor extends Component {
     complete();
   }
 
-  buildBooleanInput(text, stateValue, update) {
-    return (
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Text style={styles.switchLabels}>{text}</Text>
-        <Switch
-          onValueChange={update}
-          value={!!stateValue}
-        />
-        <Text>
-          {' '}
-          {stateValue ? 'Yes' : 'No'}
-          {' '}
-        </Text>
-      </View>
-    );
-  }
-
-  buildTextInput(stateValue, placeholder, update) {
-    return (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        value={stateValue}
-        placeholder={placeholder}
-        onChangeText={update}
-      />
-    );
-  }
-
-  buildNumericInput(stateValue, placeholder, update) {
-    return (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        keyboardType="numeric"
-        value={stateValue}
-        placeholder={placeholder}
-        onChangeText={update}
-      />
-    );
-  }
-
   render() {
     const {
       name, code, coord, entry, restroom, elevator, comment, url
@@ -149,7 +146,7 @@ class Editor extends Component {
           key={code}
           coordinate={[Number(coord[0]), Number(coord[1])]}
         >
-          <MapboxGL.Callout title={name}/>
+          <MapboxGL.Callout title={name} />
         </MapboxGL.PointAnnotation>
       ) : null;
 
@@ -173,29 +170,29 @@ class Editor extends Component {
         {coordInput}
         <Text>Click to Add or Move Pin (Must be Set)</Text>
         <Text style={styles.labels}>Latitude:</Text>
-        {this.buildNumericInput(lat, "Latitude", (text) => { this.changeCoord(text, 0); })}
+        {buildNumericInput(lat, 'Latitude', (text) => { this.changeCoord(text, 0); })}
         <Text style={styles.labels}>Longitude:</Text>
-        {this.buildNumericInput(long, "Longitude", (text) => { this.changeCoord(text, 1); })}
+        {buildNumericInput(long, 'Longitude', (text) => { this.changeCoord(text, 1); })}
         <View style={styles.textbox}>
           <Text style={styles.labels}>Name:</Text>
-          {this.buildTextInput(name, "Name must be set", (text) => {
+          {buildTextInput(name, 'Name must be set', (text) => {
             this.setState({ name: text });
           })}
           <Text style={styles.labels}>Code:</Text>
-          {this.buildTextInput(code, "Code", (text) => { this.setState({ code: text }); })}
-          {this.buildBooleanInput("Accessible Entry?:", entry, () => {
+          {buildTextInput(code, 'Code', (text) => { this.setState({ code: text }); })}
+          {buildBooleanInput('Accessible Entry?:', entry, () => {
             this.setState({ entry: !entry });
           })}
-          {this.buildBooleanInput("Accessible Restroom?:", restroom, () => {
+          {buildBooleanInput('Accessible Restroom?:', restroom, () => {
             this.setState({ restroom: !restroom });
           })}
-          {this.buildBooleanInput("Public Elevator?:", elevator, () => {
+          {buildBooleanInput('Public Elevator?:', elevator, () => {
             this.setState({ elevator: !elevator });
           })}
           <Text style={styles.labels}>Comment:</Text>
-          {this.buildTextInput(comment, "Comment", (text) => { this.setState({ comment: text }); })}
+          {buildTextInput(comment, 'Comment', (text) => { this.setState({ comment: text }); })}
           <Text style={styles.labels}>Floor Plan URL:</Text>
-          {this.buildTextInput(url, "url", (text) => { this.setState({ url: text }); })}
+          {buildTextInput(url, 'url', (text) => { this.setState({ url: text }); })}
           <View>
             <Button disabled={!(name !== '' && coord)} onPress={this.handleSave} title="Save" />
             <Button onPress={this.handleCancel} title="Cancel" />

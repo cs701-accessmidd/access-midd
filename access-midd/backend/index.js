@@ -78,7 +78,8 @@ app.delete('/buildings/:id', (req, res) => {
     .del()
     .then(() => {
       res.sendStatus(200); // code for success
-    }).catch((err) => {
+    })
+    .catch((err) => {
       console.log(err); // eslint-disable-line no-console
       res.sendStatus(500);
     });

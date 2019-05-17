@@ -106,21 +106,30 @@ export default class App extends Component<{}> {
 
     const view = listView
       ? (
-        <ListView filteredData={filteredData} edit={(building) => {
-          this.handleChange('');
-          this.setState({ detailPoint: building, mode: 'edit' });
-        }} />
+        <ListView
+          filteredData={filteredData}
+          edit={(building) => {
+            this.handleChange('');
+            this.setState({ detailPoint: building, mode: 'edit' });
+          }}
+        />
       ) : (
-        <MapView filteredData={filteredData} directionsView={directionsView} edit={(building) => {
-          this.handleChange('');
-          this.setState({ detailPoint: building, mode: 'edit' });
-        }} />
+        <MapView
+          filteredData={filteredData}
+          directionsView={directionsView}
+          edit={(building) => {
+            this.handleChange('');
+            this.setState({ detailPoint: building, mode: 'edit' });
+          }}
+        />
       );
     const viewButtonTitle = listView ? 'map' : 'list';
     const searchBar = menu || directionsView ? null
       : (
         <TextInput
-          style={{ height: 35, width: '75%', borderColor: 'gray', borderWidth: 1.5, justifyContent: 'flex-start' }}
+          style={{
+            height: 35, width: '75%', borderColor: 'gray', borderWidth: 1.5, justifyContent: 'flex-start'
+          }}
           onChangeText={(text) => { this.handleChange(text); }}
           placeholder="Search Buildings..."
         />
@@ -138,9 +147,18 @@ export default class App extends Component<{}> {
               menu={menu}
               direction={directionsView}
               currentView={viewButtonTitle}
-              directionsView={() => { this.handleChange(''); this.setState({ directionsView: !directionsView, menu: !menu }); }}
-              changeViewType={() => this.setState({ listView: !listView, menu: !menu })}
-              newBuilding={() => { this.handleChange(''); this.setState({ mode: 'edit', detailPoint: null, menu: !menu }); }}
+              directionsView={() => {
+                this.handleChange('');
+                this.setState({ directionsView: !directionsView, menu: !menu });
+              }}
+              changeViewType={() => {
+                this.handleChange('');
+                this.setState({ listView: !listView, menu: !menu });
+              }}
+              newBuilding={() => {
+                this.handleChange('');
+                this.setState({ mode: 'edit', detailPoint: null, menu: !menu });
+              }}
             />
           </View>
           {message}

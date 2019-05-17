@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const boolToEnglish = bool => bool ? 'Yes' : 'No';
+const boolToEnglish = bool => (bool ? 'Yes' : 'No');
 
 function Details(props) {
   const { building } = props;
@@ -42,7 +42,7 @@ function Details(props) {
   const elevator = boolToEnglish(building.elevator);
   const comment = building.comment ? building.comment : 'N/A';
   const floorplans = building.plan_url
-    ? (<WebView source={{ uri: building.plan_url }} style={{ marginTop: 20 }}/>)
+    ? (<WebView source={{ uri: building.plan_url }} style={{ marginTop: 20 }} />)
     : (<Text>*No floorplans Available at this time.</Text>);
 
   return (
@@ -55,8 +55,8 @@ function Details(props) {
       <Text>{`Public Elevator?:  ${elevator}`}</Text>
       <Text>{`Comments:  ${comment}`}</Text>
       {floorplans}
-      <Button title="Edit" onPress={() => props.edit(building)}/>
-      <Button title="close" onPress={() => props.view(false)}/>
+      <Button title="Edit" onPress={() => props.edit(building)} />
+      <Button title="close" onPress={() => props.view(false)} />
     </View>
   );
 }

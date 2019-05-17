@@ -21,24 +21,26 @@ function Menu(props) {
 
   let buttons = null;
   buttons = currentView === 'list'
-    ? (<View>
-        <Button title="Directions" onPress={() => props.directionsView()}/>
-        <Button title="List View" onPress={() => props.changeViewType()}/>
-      </View>)
-    : (<Button title="Map View" onPress={() => props.changeViewType()}/>);
+    ? (
+      <View>
+        <Button title="Directions" onPress={() => props.directionsView()} />
+        <Button title="List View" onPress={() => props.changeViewType()} />
+      </View>
+    )
+    : (<Button title="Map View" onPress={() => props.changeViewType()} />);
 
   const menuButton = direction
-    ? (<Button title="< Back" onPress={() => props.directionsView()}/>)
-    : (<Button title="Menu" onPress={() => props.showMenu()}/>);
+    ? (<Button title="< Back" onPress={() => props.directionsView()} />)
+    : (<Button title="Menu" onPress={() => props.showMenu()} />);
 
   if (menu && !direction) {
     return (
       <View>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Button title="< Exit Menu" onPress={() => props.showMenu()}/>
+          <Button title="< Exit Menu" onPress={() => props.showMenu()} />
         </View>
         {buttons}
-        <Button title="New Building" onPress={() => props.newBuilding()}/>
+        <Button title="New Building" onPress={() => props.newBuilding()} />
       </View>
     );
   }
