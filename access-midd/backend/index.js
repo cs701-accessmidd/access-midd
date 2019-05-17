@@ -1,12 +1,10 @@
 const express = require('express');
-
-const app = express();
-const port = 3000;
-
 const knexImport = require('knex');
 const knexConfig = require('./knexfile');
 
 const knex = knexImport(knexConfig[process.env.NODE_ENV || 'development']);
+const app = express();
+const port = 3000;
 
 app.use(express.json());
 
@@ -18,14 +16,13 @@ app.get('/buildings', (req, res) => {
 
 app.put('/buildings/new', (req, res) => {
   // there's definitely a better way to do this than make two queries
-  // maybe combine routes as insert on duplicate key update?
+  //   does sqlite support insert on duplicate key update?
   knex('buildings')
     .select('*')
     .whereRaw('name = ?', [req.body.name])
     .then((result) => {
       if (result.length > 1) {
-        res.status(409).send({ error: 'Conflict: building already exists' });
-        // conflict error code to indicate attempted duplicate entry
+        res.sendStatus(409); // conflict error code to indicate attempted duplicate entry
       } else {
         const newBuilding = {
           address: req.body.address || '',
@@ -44,13 +41,13 @@ app.put('/buildings/new', (req, res) => {
           res.sendStatus(201); // code for successfully created item
         }).catch((err) => {
           console.log(err); // eslint-disable-line no-console
-          res.sendStatus(500); // try to parse the actual error maybe
+          res.sendStatus(500);
         });
       }
     });
 });
 
-app.post('/building/:id', (req, res) => {
+app.post('/buildings/:id', (req, res) => {
   const updateObj = {
     name: req.body.name,
     code: req.body.code,
@@ -71,7 +68,20 @@ app.post('/building/:id', (req, res) => {
     })
     .catch((err) => {
       console.log(err); // eslint-disable-line no-console
-      res.sendStatus(500); // try to parse the actual error maybe
+      res.sendStatus(500);
+    });
+});
+
+app.delete('/buildings/:id', (req, res) => {
+  knex('buildings')
+    .where('id', '=', req.params.id)
+    .del()
+    .then(() => {
+      res.sendStatus(200); // code for success
+    })
+    .catch((err) => {
+      console.log(err); // eslint-disable-line no-console
+      res.sendStatus(500);
     });
 });
 

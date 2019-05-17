@@ -12,7 +12,6 @@
   sourcecode: https://github.com/mapbox/store-locator-react-native/blob/master/src/components/Directions.js
 */
 
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
@@ -27,7 +26,6 @@ function areCoordinatesEqual(c1, c2) {
   return dLng <= 6e-6 && dLat <= 6e-6;
 }
 
-
 class Directions extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +36,7 @@ class Directions extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const { accessToken, origin, destination } = this.props;
     this.setState({ mapboxClient: new MapboxClient(accessToken) }, () => {
       this.fetchDirections(origin, destination);
@@ -66,7 +64,6 @@ class Directions extends React.Component {
       this.fetchDirections(nextOrigin, nextDest);
     }
   }
-
 
   async fetchDirections(origin, dest) {
     const { mapboxClient } = this.state;

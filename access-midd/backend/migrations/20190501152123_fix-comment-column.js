@@ -1,12 +1,3 @@
-// exports.up = knex => knex.schema.table('buildings', (table) => {
-//   table.text('comment', 'longtext');
-// });
-//
-// exports.down = knex => knex.schema.table('buildings', (table) => {
-//   table.dropColumn('comment');
-// });
-
-
 exports.up = knex => knex.schema.createTable('buildings', (table) => {
   table.increments('id').primary();
   table.string('name');
