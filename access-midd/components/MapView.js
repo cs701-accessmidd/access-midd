@@ -212,13 +212,13 @@ class MapView extends Component {
           scrollEnabled
         >
           {directions}
-          {currentLocation}
+          {/*currentLocation*/}
           {pinData.map(point => (
             <MapboxGL.PointAnnotation
               id={point.code}
               title={point.name}
               key={point.id}
-              selected
+              selected={false}
               coordinate={point.coord}
               onSelected={() => this.setState({ detailPoint: point })}
             >
